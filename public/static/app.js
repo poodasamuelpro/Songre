@@ -24,7 +24,6 @@
     var menu = document.getElementById('navMenu');
     if (!navbar) return;
 
-    // Scroll effect
     var lastScroll = 0;
     window.addEventListener('scroll', function() {
       var current = window.scrollY;
@@ -36,7 +35,6 @@
       lastScroll = current;
     }, { passive: true });
 
-    // Mobile toggle
     if (toggle && menu) {
       toggle.addEventListener('click', function() {
         var isOpen = menu.classList.contains('open');
@@ -46,7 +44,6 @@
         document.body.style.overflow = isOpen ? '' : 'hidden';
       });
 
-      // Close on outside click
       document.addEventListener('click', function(e) {
         if (!navbar.contains(e.target) && menu.classList.contains('open')) {
           menu.classList.remove('open');
@@ -56,7 +53,6 @@
         }
       });
 
-      // Close on ESC
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && menu.classList.contains('open')) {
           menu.classList.remove('open');
@@ -71,7 +67,6 @@
   // ── Scroll Reveal ─────────────────────────────────────────
   function initScrollReveal() {
     if (!window.IntersectionObserver) return;
-
     var elements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
     if (!elements.length) return;
 
@@ -97,14 +92,11 @@
       if (!btn) return;
       btn.addEventListener('click', function() {
         var isOpen = item.classList.contains('open');
-        // Close all
         items.forEach(function(i) { i.classList.remove('open'); });
-        // Toggle current
         if (!isOpen) item.classList.add('open');
       });
     });
 
-    // Category filter
     var catBtns = document.querySelectorAll('.faq-cat-btn');
     var groups = document.querySelectorAll('.faq-group');
     if (!catBtns.length) return;
@@ -146,14 +138,12 @@
   function animateCounter(el) {
     var target = parseInt(el.dataset.target || el.textContent.replace(/\D/g, ''), 10);
     var duration = 2000;
-    var start = 0;
     var startTime = null;
     var suffix = el.dataset.suffix || '';
 
     function step(ts) {
       if (!startTime) startTime = ts;
       var progress = Math.min((ts - startTime) / duration, 1);
-      // Ease out cubic
       var ease = 1 - Math.pow(1 - progress, 3);
       var current = Math.floor(ease * target);
       el.textContent = current.toLocaleString() + suffix;
@@ -175,19 +165,31 @@
       e.preventDefault();
       if (!validateForm(form)) return;
 
-      // Loading state
       if (submitBtn) {
         submitBtn.classList.add('loading');
         submitBtn.disabled = true;
       }
 
+      // ── Conversion FormData → objet JSON ────────────────────
+      // Important : Vercel ne parse PAS automatiquement le body
+      // en multipart/form-data (ce que produit un fetch() avec
+      // un FormData brut). On envoie donc du JSON, que Vercel
+      // sait parser nativement.
       var formData = new FormData(form);
+      var payload = {};
+      formData.forEach(function(value, key) {
+        payload[key] = value;
+      });
+
       var action = form.action || form.dataset.action;
 
       fetch(action, {
         method: 'POST',
-        body: formData,
-        headers: { 'Accept': 'application/json' }
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(payload)
       })
       .then(function(res) {
         if (res.ok) {
@@ -208,7 +210,6 @@
       });
     });
 
-    // Real-time validation
     form.querySelectorAll('.form-control').forEach(function(input) {
       input.addEventListener('blur', function() { validateField(input); });
       input.addEventListener('input', function() {
