@@ -1,7 +1,28 @@
-export function generateEmailHtml(name: string, email: string, subject: string, message: string, gdpr_consent: string, locale: string): string {
+export function generateEmailHtml(
+  name: string,
+  email: string,
+  subject: string,
+  message: string,
+  gdpr_consent: string,
+  locale: string
+): string {
   const isFrench = locale === 'fr';
   const consentText = isFrench ? 'Consentement RGPD' : 'GDPR Consent';
   const consentValue = gdpr_consent === 'yes' ? (isFrench ? 'Oui' : 'Yes') : (isFrench ? 'Non' : 'No');
+
+  // Échappement basique pour éviter l'injection HTML dans l'email généré
+  const escapeHtml = (str: string) =>
+    str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+
+  const safeName = escapeHtml(name);
+  const safeEmail = escapeHtml(email);
+  const safeSubject = escapeHtml(subject);
+  const safeMessage = escapeHtml(message).replace(/\n/g, '<br>');
 
   return `
     <!DOCTYPE html>
@@ -12,7 +33,7 @@ export function generateEmailHtml(name: string, email: string, subject: string, 
       <title>${isFrench ? 'Nouveau message de contact - SONGRE' : 'New Contact Message - SONGRE'}</title>
       <style>
         body {
-          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
           line-height: 1.6;
           color: #333;
           background-color: #f4f4f4;
@@ -26,35 +47,18 @@ export function generateEmailHtml(name: string, email: string, subject: string, 
           padding: 30px;
           border-radius: 8px;
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-          border-top: 4px solid #e02b4d; /* SONGRE primary color */
+          border-top: 4px solid #e02b4d;
         }
-        .header {
-          text-align: center;
-          padding-bottom: 20px;
-          border-bottom: 1px solid #eee;
-          margin-bottom: 20px;
-        }
-        .header img {
-          max-width: 150px;
-          height: auto;
-        }
-        .header h1 {
-          color: #e02b4d;
-          font-size: 24px;
-          margin-top: 10px;
-        }
-        .content p {
-          margin-bottom: 10px;
-        }
-        .content strong {
-          color: #e02b4d;
-        }
+        .header { text-align: center; padding-bottom: 20px; border-bottom: 1px solid #eee; margin-bottom: 20px; }
+        .header img { max-width: 150px; height: auto; }
+        .header h1 { color: #e02b4d; font-size: 24px; margin-top: 10px; }
+        .content p { margin-bottom: 10px; }
+        .content strong { color: #e02b4d; }
         .message-box {
           background-color: #f9f9f9;
           border-left: 4px solid #e02b4d;
           padding: 15px;
-          margin-top: 20px;
-          margin-bottom: 20px;
+          margin: 20px 0;
           font-style: italic;
         }
         .footer {
@@ -65,10 +69,7 @@ export function generateEmailHtml(name: string, email: string, subject: string, 
           font-size: 12px;
           color: #777;
         }
-        .footer a {
-          color: #e02b4d;
-          text-decoration: none;
-        }
+        .footer a { color: #e02b4d; text-decoration: none; }
       </style>
     </head>
     <body>
@@ -78,13 +79,11 @@ export function generateEmailHtml(name: string, email: string, subject: string, 
           <h1>${isFrench ? 'Nouveau message de contact' : 'New Contact Message'}</h1>
         </div>
         <div class="content">
-          <p><strong>${isFrench ? 'Nom' : 'Name'} :</strong> ${name}</p>
-          <p><strong>${isFrench ? 'Email' : 'Email'} :</strong> ${email}</p>
-          <p><strong>${isFrench ? 'Sujet' : 'Subject'} :</strong> ${subject}</p>
-          <p><strong>${isFrench ? 'Message' : 'Message'} :</strong></p>
-          <div class="message-box">
-            <p>${message.replace(/\n/g, '<br>')}</p>
-          </div>
+          <p><strong>${isFrench ? 'Nom' : 'Name'} :</strong> ${safeName}</p>
+          <p><strong>Email :</strong> ${safeEmail}</p>
+          <p><strong>${isFrench ? 'Sujet' : 'Subject'} :</strong> ${safeSubject}</p>
+          <p><strong>Message :</strong></p>
+          <div class="message-box"><p>${safeMessage}</p></div>
           <hr>
           <p><small><strong>${consentText} :</strong> ${consentValue}</small></p>
         </div>
