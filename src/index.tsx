@@ -96,9 +96,18 @@ app.post('/api/contact', async (c) => {
   const toEmail = c.env.CONTACT_EMAIL_TO;
   const fromEmail = c.env.CONTACT_EMAIL_FROM;
 
-  if (!apiKey || !toEmail || !fromEmail) {
-    return c.json({ success: false, error: 'Configuration error' }, 500);
-  }
+    if (!apiKey) {
+      console.error('RESEND_API_KEY is not set.');
+      return c.json({ success: false, error: 'Configuration error: RESEND_API_KEY missing' }, 500);
+    }
+    if (!toEmail) {
+      console.error('CONTACT_EMAIL_TO is not set.');
+      return c.json({ success: false, error: 'Configuration error: CONTACT_EMAIL_TO missing' }, 500);
+    }
+    if (!fromEmail) {
+      console.error('CONTACT_EMAIL_FROM is not set.');
+      return c.json({ success: false, error: 'Configuration error: CONTACT_EMAIL_FROM missing' }, 500);
+    }
 
   try {
     const resend = new Resend(apiKey);
@@ -112,13 +121,14 @@ app.post('/api/contact', async (c) => {
 
     if (error) {
       console.error('Resend email error:', error);
-      return c.json({ success: false, error: 'Failed to send email' }, 400);
+      return c.json({ success: false, error: `Failed to send email: ${error?.message || 'Unknown error'}` }, 400);
     }
 
     if (data) {
       return c.json({ success: true });
     }
   } catch (err) {
+    console.error('Internal server error in contact API:', err);
     return c.json({ success: false, error: 'Internal server error' }, 500);
   }
 });
