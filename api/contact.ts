@@ -2,7 +2,7 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { Resend } from 'resend';
 import { parse } from 'querystring';
 
-// Helper to generate email HTML (embedded to avoid import issues on Vercel)
+// Helper to generate email HTML
 function generateEmailHtml(name: string, email: string, subject: string, message: string, gdpr_consent: string, locale: string): string {
   const isFrench = locale === 'fr';
   const consentText = isFrench ? 'Consentement RGPD' : 'GDPR Consent';
@@ -49,7 +49,10 @@ function generateEmailHtml(name: string, email: string, subject: string, message
 }
 
 async function getRequestBody(req: VercelRequest): Promise<any> {
-  if (req.body && Object.keys(req.body).length > 0) {
+  console.log('Content-Type:', req.headers['content-type']);
+  
+  if (req.body && typeof req.body === 'object' && Object.keys(req.body).length > 0) {
+    console.log('Body already parsed by Vercel:', req.body);
     return req.body;
   }
 
@@ -59,16 +62,23 @@ async function getRequestBody(req: VercelRequest): Promise<any> {
       body += chunk.toString();
     });
     req.on('end', () => {
+      console.log('Raw body received:', body);
       const contentType = req.headers['content-type'] || '';
       if (contentType.includes('application/x-www-form-urlencoded')) {
-        resolve(parse(body));
+        const parsed = parse(body);
+        console.log('Parsed urlencoded body:', parsed);
+        resolve(parsed);
       } else if (contentType.includes('application/json')) {
         try {
-          resolve(JSON.parse(body));
-        } catch {
+          const parsed = JSON.parse(body);
+          console.log('Parsed JSON body:', parsed);
+          resolve(parsed);
+        } catch (e) {
+          console.error('JSON parse error:', e);
           resolve({});
         }
       } else {
+        console.log('Unknown content type, returning empty object');
         resolve({});
       }
     });
@@ -76,6 +86,9 @@ async function getRequestBody(req: VercelRequest): Promise<any> {
 }
 
 export default async function (req: VercelRequest, res: VercelResponse) {
+  console.log('--- Contact API Request ---');
+  console.log('Method:', req.method);
+
   if (req.method !== 'POST') {
     return res.status(405).json({ success: false, error: 'Method Not Allowed' });
   }
@@ -84,9 +97,15 @@ export default async function (req: VercelRequest, res: VercelResponse) {
     const body = await getRequestBody(req);
     const { name, email, subject, message, gdpr_consent, _language } = body;
 
+    console.log('Extracted fields:', { name, email, subject, message, gdpr_consent, _language });
+
     if (!name || !email || !message) {
-      console.error('Validation error: missing fields', { name, email, message });
-      return res.status(400).json({ success: false, error: 'Missing required fields (name, email, message)' });
+      console.error('Validation failed: Missing required fields');
+      return res.status(400).json({ 
+        success: false, 
+        error: 'Missing required fields',
+        debug: { name: !!name, email: !!email, message: !!message }
+      });
     }
 
     const RESEND_API_KEY = process.env.RESEND_API_KEY;
@@ -111,9 +130,10 @@ export default async function (req: VercelRequest, res: VercelResponse) {
       return res.status(400).json({ success: false, error: error.message });
     }
 
+    console.log('Email sent successfully:', data);
     return res.status(200).json({ success: true });
-  } catch (err) {
-    console.error('API Error:', err);
-    return res.status(500).json({ success: false, error: 'Internal server error' });
+  } catch (err: any) {
+    console.error('Global API Error:', err);
+    return res.status(500).json({ success: false, error: 'Internal server error', message: err.message });
   }
 }
