@@ -7,6 +7,8 @@ import { aboutPage } from './routes/about';
 import { securityPage } from './routes/security';
 import { faqPage } from './routes/faq';
 import { contactPage } from './routes/contact';
+import { Resend } from 'resend';
+import { generateEmailHtml } from './utils/emailTemplate';
 import { cguPage, privacyPage } from './routes/legal';
 import { getBaseUrl } from './utils/seo';
 
@@ -99,33 +101,22 @@ app.post('/api/contact', async (c) => {
   }
 
   try {
-    const res = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${apiKey}`
-      },
-      body: JSON.stringify({
-        from: `SONGRE - Don de sang <${fromEmail}>`,
-        to: [toEmail],
-        subject: `[SONGRE] ${subject}: ${name}`,
-        html: `
-          <h2>Nouveau message de contact</h2>
-          <p><strong>Nom :</strong> ${name}</p>
-          <p><strong>Email :</strong> ${email}</p>
-          <p><strong>Sujet :</strong> ${subject}</p>
-          <p><strong>Message :</strong></p>
-          <p>${message}</p>
-          <hr>
-          <p><small>Consentement RGPD : ${gdpr_consent === 'yes' ? 'Oui' : 'Non'}</small></p>
-        `
-      })
+    const resend = new Resend(apiKey);
+
+    const { data, error } = await resend.emails.send({
+      from: `SONGRE <${fromEmail}>`,
+      to: [toEmail],
+      subject: `[SONGRE] ${subject}: ${name}`,
+      html: generateEmailHtml(name as string, email as string, subject as string, message as string, gdpr_consent as string, c.req.param('locale') as string),
     });
 
-    if (res.ok) {
-      return c.json({ success: true });
-    } else {
+    if (error) {
+      console.error('Resend email error:', error);
       return c.json({ success: false, error: 'Failed to send email' }, 400);
+    }
+
+    if (data) {
+      return c.json({ success: true });
     }
   } catch (err) {
     return c.json({ success: false, error: 'Internal server error' }, 500);

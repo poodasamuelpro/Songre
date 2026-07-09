@@ -4,7 +4,7 @@ import { getSeoData, generateHead } from '../utils/seo';
 import { layout } from '../utils/components';
 
 // Formspree endpoint — remplacer par le vrai ID Formspree
-const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xzzpwvbp';
+// const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xzzpwvbp'; // Commented out as no longer used
 
 export function contactPage(locale: TranslationKey, path: string, baseUrl: string): string {
   const tr = t(locale);
@@ -105,7 +105,7 @@ export function contactPage(locale: TranslationKey, path: string, baseUrl: strin
               ❌ ${tr.contact.errorMsg}
             </div>
 
-            <form id="contactForm" action="${FORMSPREE_ENDPOINT}" method="POST" novalidate>
+            <form id="contactForm" action="/api/contact" method="POST" novalidate>
               <input type="hidden" name="_language" value="${locale}">
               <input type="hidden" name="_subject" value="[SONGRE] Nouveau message de contact">
 
