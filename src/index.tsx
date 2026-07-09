@@ -110,8 +110,10 @@ app.post('/api/contact', async (c) => {
     }
 
   try {
+    console.log("Attempting to initialize Resend with API Key: ", apiKey ? "*****" + apiKey.substring(apiKey.length - 4) : "(empty)");
     const resend = new Resend(apiKey);
 
+    console.log("Attempting to send email to: ", toEmail, " from: ", fromEmail, " subject: ", subject);
     const { data, error } = await resend.emails.send({
       from: `SONGRE <${fromEmail}>`,
       to: [toEmail],
