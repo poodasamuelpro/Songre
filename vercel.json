@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "framework": "vite",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/api/index" }
+  ],
+  "functions": {
+    "api/index.ts": {
+      "runtime": "vercel-node@latest"
+    }
+  }
+}

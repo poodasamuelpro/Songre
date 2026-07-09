@@ -1,5 +1,6 @@
 import { Hono } from 'hono';
-import { serveStatic } from 'hono/cloudflare-workers';
+// Import dynamique de l'adaptateur selon l'environnement
+import { serveStatic } from 'hono/serve-static';
 import { securityHeaders, corsMiddleware, rateLimit } from './middleware/security';
 import { detectLocale } from './utils/i18n';
 import { homePage } from './routes/home';
