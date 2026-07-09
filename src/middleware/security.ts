@@ -72,6 +72,9 @@ export async function corsMiddleware(c: Context, next: Next) {
   const allowed = [
     'https://songre.bf',
     'https://www.songre.bf',
+    'https://songre.com',
+    'https://www.songre.com',
+    'https://songre.vercel.app',
     'http://localhost:3000',
     'http://localhost:5173',
   ];

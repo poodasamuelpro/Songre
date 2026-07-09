@@ -11,8 +11,8 @@ export function homePage(locale: TranslationKey, path: string): string {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'SONGRE',
-    url: 'https://songre.bf',
-    logo: 'https://songre.bf/logo-songre.png',
+    url: 'https://songre.vercel.app',
+    logo: 'https://songre.vercel.app/logo-songre.png',
     description: seo.description,
     contactPoint: {
       '@type': 'ContactPoint',

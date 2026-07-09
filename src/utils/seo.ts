@@ -14,7 +14,7 @@ export interface SEOMeta {
   alternateUrl: string;
 }
 
-const BASE_URL = 'https://songre.bf';
+const BASE_URL = 'https://songre.vercel.app';
 const OG_IMAGE = `${BASE_URL}/static/images/og-image.png`;
 
 export const seoData: Record<string, Record<string, SEOMeta>> = {
