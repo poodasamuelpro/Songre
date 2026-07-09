@@ -50,6 +50,7 @@ export async function securityHeaders(c: Context, next: Next) {
     'Content-Security-Policy',
     [
       "default-src 'self'",
+      "manifest-src 'self'",
       "script-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.tailwindcss.com",
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com data:",

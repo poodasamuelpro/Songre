@@ -107,7 +107,7 @@ app.post('/api/contact', async (c) => {
       from: `SONGRE <${fromEmail}>`,
       to: [toEmail],
       subject: `[SONGRE] ${subject}: ${name}`,
-      html: generateEmailHtml(name as string, email as string, subject as string, message as string, gdpr_consent as string, c.req.param('locale') as string),
+      html: generateEmailHtml(name as string, email as string, subject as string, message as string, gdpr_consent as string, body._language as string || \'fr\'),
     });
 
     if (error) {
