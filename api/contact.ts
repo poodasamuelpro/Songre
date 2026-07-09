@@ -1,5 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { Resend } from 'resend';
+import { parse } from 'querystring';
 
 // Helper to generate email HTML (embedded to avoid import issues on Vercel)
 function generateEmailHtml(name: string, email: string, subject: string, message: string, gdpr_consent: string, locale: string): string {
@@ -47,36 +48,62 @@ function generateEmailHtml(name: string, email: string, subject: string, message
   `;
 }
 
+async function getRequestBody(req: VercelRequest): Promise<any> {
+  if (req.body && Object.keys(req.body).length > 0) {
+    return req.body;
+  }
+
+  return new Promise((resolve) => {
+    let body = '';
+    req.on('data', (chunk) => {
+      body += chunk.toString();
+    });
+    req.on('end', () => {
+      const contentType = req.headers['content-type'] || '';
+      if (contentType.includes('application/x-www-form-urlencoded')) {
+        resolve(parse(body));
+      } else if (contentType.includes('application/json')) {
+        try {
+          resolve(JSON.parse(body));
+        } catch {
+          resolve({});
+        }
+      } else {
+        resolve({});
+      }
+    });
+  });
+}
+
 export default async function (req: VercelRequest, res: VercelResponse) {
-  // Vercel handles body parsing automatically for application/json and application/x-www-form-urlencoded
-  // but we should check if it's present.
   if (req.method !== 'POST') {
     return res.status(405).json({ success: false, error: 'Method Not Allowed' });
   }
 
-  const body = req.body || {};
-  const { name, email, subject, message, gdpr_consent, _language } = body;
-
-  if (!name || !email || !message) {
-    return res.status(400).json({ success: false, error: 'Missing required fields (name, email, message)' });
-  }
-
-  const RESEND_API_KEY = process.env.RESEND_API_KEY;
-  const CONTACT_EMAIL_TO = process.env.CONTACT_EMAIL_TO;
-  const CONTACT_EMAIL_FROM = process.env.CONTACT_EMAIL_FROM;
-
-  if (!RESEND_API_KEY || !CONTACT_EMAIL_TO || !CONTACT_EMAIL_FROM) {
-    console.error('Missing environment variables');
-    return res.status(500).json({ success: false, error: 'Server configuration error' });
-  }
-
   try {
+    const body = await getRequestBody(req);
+    const { name, email, subject, message, gdpr_consent, _language } = body;
+
+    if (!name || !email || !message) {
+      console.error('Validation error: missing fields', { name, email, message });
+      return res.status(400).json({ success: false, error: 'Missing required fields (name, email, message)' });
+    }
+
+    const RESEND_API_KEY = process.env.RESEND_API_KEY;
+    const CONTACT_EMAIL_TO = process.env.CONTACT_EMAIL_TO;
+    const CONTACT_EMAIL_FROM = process.env.CONTACT_EMAIL_FROM;
+
+    if (!RESEND_API_KEY || !CONTACT_EMAIL_TO || !CONTACT_EMAIL_FROM) {
+      console.error('Missing environment variables');
+      return res.status(500).json({ success: false, error: 'Server configuration error' });
+    }
+
     const resend = new Resend(RESEND_API_KEY);
     const { data, error } = await resend.emails.send({
       from: `SONGRE <${CONTACT_EMAIL_FROM}>`,
       to: [CONTACT_EMAIL_TO],
       subject: `[SONGRE] ${subject || 'Contact'}: ${name}`,
-      html: generateEmailHtml(name, email, subject || 'Contact', message, gdpr_consent || 'no', _language || 'fr'),
+      html: generateEmailHtml(name as string, email as string, subject as string || 'Contact', message as string, gdpr_consent as string || 'no', _language as string || 'fr'),
     });
 
     if (error) {
