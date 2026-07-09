@@ -1,7 +1,7 @@
 import type { TranslationKey } from './translations';
 import { t } from './translations';
 
-// ─── Navigation Component ───────────────────────────────────────────────────
+// ─── Navigation Component  ───────────────────────────────────────────────────
 export function navbar(locale: TranslationKey, currentPath: string): string {
   const tr = t(locale);
   const prefix = `/${locale}`;
