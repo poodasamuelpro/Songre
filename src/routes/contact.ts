@@ -1,14 +1,14 @@
 import type { TranslationKey } from '../utils/translations';
 import { t } from '../utils/translations';
-import { seoData, generateHead } from '../utils/seo';
+import { getSeoData, generateHead } from '../utils/seo';
 import { layout } from '../utils/components';
 
 // Formspree endpoint — remplacer par le vrai ID Formspree
 const FORMSPREE_ENDPOINT = 'https://formspree.io/f/xzzpwvbp';
 
-export function contactPage(locale: TranslationKey, path: string): string {
+export function contactPage(locale: TranslationKey, path: string, baseUrl: string): string {
   const tr = t(locale);
-  const seo = seoData[locale].contact;
+  const seo = getSeoData(baseUrl)[locale].contact;
 
   const content = `
   <!-- ── PAGE HERO ─────────────────────────────────────────── -->
@@ -182,6 +182,6 @@ export function contactPage(locale: TranslationKey, path: string): string {
     </div>
   </section>`;
 
-  const head = generateHead(seo);
+  const head = generateHead(seo, baseUrl);
   return layout(locale, path, head, content);
 }

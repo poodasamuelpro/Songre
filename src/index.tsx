@@ -7,6 +7,7 @@ import { aboutPage } from './routes/about';
 import { securityPage } from './routes/security';
 import { faqPage } from './routes/faq';
 import { contactPage } from './routes/contact';
+import { cguPage, privacyPage } from './routes/legal';
 import { getBaseUrl } from './utils/seo';
 
 type Bindings = {
@@ -67,6 +68,22 @@ app.get('/:locale/contact', (c) => {
   const baseUrl = getBaseUrl(c.env);
   return c.html(contactPage(locale, c.req.path, baseUrl));
 });
+
+app.get('/:locale/cgu', (c) => {
+  const locale = c.req.param('locale') as any;
+  const baseUrl = getBaseUrl(c.env);
+  return c.html(cguPage(locale, c.req.path, baseUrl));
+});
+
+app.get('/:locale/terms', (c) => c.redirect(`/${c.req.param('locale')}/cgu`));
+
+app.get('/:locale/confidentialite', (c) => {
+  const locale = c.req.param('locale') as any;
+  const baseUrl = getBaseUrl(c.env);
+  return c.html(privacyPage(locale, c.req.path, baseUrl));
+});
+
+app.get('/:locale/privacy', (c) => c.redirect(`/${c.req.param('locale')}/confidentialite`));
 
 // ─── API: CONTACT FORM (RESEND) ─────────────────────────────────────────────
 app.post('/api/contact', async (c) => {

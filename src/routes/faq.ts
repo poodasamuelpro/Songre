@@ -1,6 +1,6 @@
 import type { TranslationKey } from '../utils/translations';
 import { t } from '../utils/translations';
-import { seoData, generateHead } from '../utils/seo';
+import { getSeoData, generateHead } from '../utils/seo';
 import { layout } from '../utils/components';
 
 function faqData(locale: TranslationKey) {
@@ -100,9 +100,9 @@ function faqData(locale: TranslationKey) {
   return locale === 'fr' ? fr : en;
 }
 
-export function faqPage(locale: TranslationKey, path: string): string {
+export function faqPage(locale: TranslationKey, path: string, baseUrl: string): string {
   const tr = t(locale);
-  const seo = seoData[locale].faq;
+  const seo = getSeoData(baseUrl)[locale].faq;
   const faqs = faqData(locale);
 
   const allFaqs = faqs.flatMap(group => group.items.map(item => ({
@@ -170,6 +170,6 @@ export function faqPage(locale: TranslationKey, path: string): string {
     </div>
   </section>`;
 
-  const head = generateHead(seo, jsonLd);
+  const head = generateHead(seo, baseUrl, jsonLd);
   return layout(locale, path, head, content);
 }

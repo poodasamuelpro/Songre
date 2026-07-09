@@ -1,11 +1,11 @@
 import type { TranslationKey } from '../utils/translations';
 import { t } from '../utils/translations';
-import { seoData, generateHead } from '../utils/seo';
+import { getSeoData, generateHead } from '../utils/seo';
 import { layout } from '../utils/components';
 
-export function securityPage(locale: TranslationKey, path: string): string {
+export function securityPage(locale: TranslationKey, path: string, baseUrl: string): string {
   const tr = t(locale);
-  const seo = seoData[locale].security;
+  const seo = getSeoData(baseUrl)[locale].security;
 
   const content = `
   <!-- ── PAGE HERO ─────────────────────────────────────────── -->
@@ -169,6 +169,6 @@ export function securityPage(locale: TranslationKey, path: string): string {
     </div>
   </section>`;
 
-  const head = generateHead(seo);
+  const head = generateHead(seo, baseUrl);
   return layout(locale, path, head, content);
 }

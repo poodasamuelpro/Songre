@@ -1,12 +1,12 @@
 import type { TranslationKey } from '../utils/translations';
 import { t } from '../utils/translations';
-import { seoData, generateHead } from '../utils/seo';
+import { getSeoData, generateHead } from '../utils/seo';
 import { layout } from '../utils/components';
 
 // ─── CGU / Terms Page ─────────────────────────────────────────────────────
-export function cguPage(locale: TranslationKey, path: string): string {
+export function cguPage(locale: TranslationKey, path: string, baseUrl: string): string {
   const tr = t(locale);
-  const seo = seoData[locale][locale === 'fr' ? 'cgu' : 'terms'];
+  const seo = getSeoData(baseUrl)[locale][locale === 'fr' ? 'cgu' : 'terms'];
   const prefix = locale === 'fr' ? '/fr' : '/en';
 
   const frContent = `
@@ -144,14 +144,14 @@ export function cguPage(locale: TranslationKey, path: string): string {
     </div>
   </section>`;
 
-  const head = generateHead(seo);
+  const head = generateHead(seo, baseUrl);
   return layout(locale, path, head, content);
 }
 
 // ─── Privacy Policy Page ──────────────────────────────────────────────────
-export function privacyPage(locale: TranslationKey, path: string): string {
+export function privacyPage(locale: TranslationKey, path: string, baseUrl: string): string {
   const tr = t(locale);
-  const seo = seoData[locale].privacy;
+  const seo = getSeoData(baseUrl)[locale].privacy;
   const prefix = locale === 'fr' ? '/fr' : '/en';
 
   const frContent = `
@@ -248,10 +248,10 @@ export function privacyPage(locale: TranslationKey, path: string): string {
   <p>SONGRE is a digital blood donation connection platform operated by the SONGRE team based in Ouagadougou, Burkina Faso. Contact: <a href="mailto:songre.contact@gmail.com">songre.contact@gmail.com</a></p>
   <p>This privacy policy is written in compliance with Burkinabè law n°010-2004/AN of April 20, 2004 on personal data protection.</p>
 
-  <h2>2. Data We Collect</h2>
+  <h2>2. Data Collected</h2>
   <h3>2.1 Registration data</h3>
   <ul>
-    <li>Blood type (ABO and Rh) — stored anonymized</li>
+    <li>Blood group (ABO and Rhesus) — stored anonymized</li>
     <li>City of residence (approximate, not exact address)</li>
     <li>Availability status (boolean: available/unavailable)</li>
     <li>Date of last donation (to respect legal intervals)</li>
@@ -259,23 +259,20 @@ export function privacyPage(locale: TranslationKey, path: string): string {
   <h3>2.2 Contact data (stored separately and encrypted)</h3>
   <ul>
     <li>Phone number or email address (for notifications only)</li>
-    <li>These data are separate from medical data and never cross-referenced</li>
+    <li>This data is separated from medical data and is never crossed</li>
   </ul>
 
   <h2>3. How We Use Your Data</h2>
-  <p>Your data is used exclusively to send you geolocated emergency alerts matching your blood type, allow you to manage your donor profile, and improve service security.</p>
+  <p>Your data is used exclusively to: send you geolocated emergency alerts, allow you to manage your donor profile, and improve service security.</p>
 
   <h2>4. Data Separation — Schema v3</h2>
-  <p>SONGRE uses a strict data separation architecture: contact data (Database A, AES-256 encrypted) is physically separate from medical data (Database B, fully anonymized). No permanent common identifier links these two databases.</p>
+  <p>SONGRE uses a strict data separation architecture: Base A (Identity) and Base B (Medical) have no permanent common identifier.</p>
 
   <h2>5. Your Rights</h2>
-  <p>Under law 010-2004/AN, you have rights of access, rectification, deletion, objection and portability. To exercise these rights: <a href="mailto:songre.contact@gmail.com">songre.contact@gmail.com</a></p>
+  <p>In accordance with law 010-2004/AN, you have rights of access, rectification, deletion, opposition, and portability. Contact: <a href="mailto:songre.contact@gmail.com">songre.contact@gmail.com</a></p>
 
   <h2>6. Security</h2>
-  <p>We apply state-of-the-art security measures: AES-256 encryption, TLS 1.3, access control, regular security audits, and an incident response plan.</p>
-
-  <h2>7. Contact</h2>
-  <p>Supervisory authority: <strong>ANPDP</strong> — National Authority for Personal Data Protection of Burkina Faso</p>
+  <p>We apply state-of-the-art security measures: AES-256 encryption at rest, TLS 1.3 for all communications, and regular security audits.</p>
   `;
 
   const content = `
@@ -286,9 +283,9 @@ export function privacyPage(locale: TranslationKey, path: string): string {
         <span class="breadcrumb-sep">›</span>
         <span>${locale === 'fr' ? 'Confidentialité' : 'Privacy'}</span>
       </nav>
-      <div class="page-hero-badge reveal">🔒 ${locale === 'fr' ? 'Confidentialité' : 'Privacy'}</div>
+      <div class="page-hero-badge reveal">🛡️ ${locale === 'fr' ? 'Protection des Données' : 'Data Protection'}</div>
       <h1 class="page-hero-title reveal">${tr.privacy.title}</h1>
-      <p class="page-hero-desc reveal">${locale === 'fr' ? 'Comment nous protégeons vos données conformément à la loi burkinabè.' : 'How we protect your data in accordance with Burkinabè law.'}</p>
+      <p class="page-hero-desc reveal">${locale === 'fr' ? 'Comment nous protégeons vos informations personnelles.' : 'How we protect your personal information.'}</p>
     </div>
   </div>
   <section class="section legal-section">
@@ -297,13 +294,17 @@ export function privacyPage(locale: TranslationKey, path: string): string {
         <div class="legal-date">📅 ${tr.privacy.lastUpdate}</div>
         ${locale === 'fr' ? frContent : enContent}
         <div style="margin-top:3rem; padding:1.5rem; background:var(--success-light); border-radius:var(--radius-md); border:1px solid rgba(47,125,92,0.15);">
-          <h3 style="margin-bottom:0.75rem; font-size:1rem; color:var(--success);">✅ ${locale === 'fr' ? 'Conformité confirmée' : 'Confirmed compliance'}</h3>
-          <p style="color:var(--text-muted); font-size:0.9rem; margin:0;">${locale === 'fr' ? 'SONGRE est déclaré auprès de l\'ANPDP (Autorité Nationale de Protection des Données à Caractère Personnel) du Burkina Faso.' : 'SONGRE is registered with the ANPDP (National Personal Data Protection Authority) of Burkina Faso.'}</p>
+          <h3 style="margin-bottom:0.75rem; font-size:1rem; color:var(--success);">${locale === 'fr' ? '🔒 Votre vie privée est sacrée' : '🔒 Your privacy is sacred'}</h3>
+          <p style="font-size:0.9rem; color:var(--text-muted); margin-bottom:0;">
+            ${locale === 'fr' 
+              ? 'SONGRE a été conçu dès le premier jour avec la protection de la vie privée comme priorité absolue. Nous ne vendons jamais vos données.' 
+              : 'SONGRE was designed from day one with privacy protection as a top priority. We never sell your data.'}
+          </p>
         </div>
       </div>
     </div>
   </section>`;
 
-  const head = generateHead(seo);
+  const head = generateHead(seo, baseUrl);
   return layout(locale, path, head, content);
 }
