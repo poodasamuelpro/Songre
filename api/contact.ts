@@ -1,51 +1,92 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { Resend } from 'resend';
-import { generateEmailHtml } from '../src/utils/emailTemplate.js';
+
+// Helper to generate email HTML (embedded to avoid import issues on Vercel)
+function generateEmailHtml(name: string, email: string, subject: string, message: string, gdpr_consent: string, locale: string): string {
+  const isFrench = locale === 'fr';
+  const consentText = isFrench ? 'Consentement RGPD' : 'GDPR Consent';
+  const consentValue = gdpr_consent === 'yes' ? (isFrench ? 'Oui' : 'Yes') : (isFrench ? 'Non' : 'No');
+
+  return `
+    <!DOCTYPE html>
+    <html lang="${locale}">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>${isFrench ? 'Nouveau message de contact - SONGRE' : 'New Contact Message - SONGRE'}</title>
+      <style>
+        body { font-family: sans-serif; line-height: 1.6; color: #333; background-color: #f4f4f4; margin: 0; padding: 0; }
+        .container { max-width: 600px; margin: 20px auto; background-color: #ffffff; padding: 30px; border-radius: 8px; border-top: 4px solid #e02b4d; }
+        .header { text-align: center; padding-bottom: 20px; border-bottom: 1px solid #eee; margin-bottom: 20px; }
+        .header h1 { color: #e02b4d; font-size: 24px; }
+        .message-box { background-color: #f9f9f9; border-left: 4px solid #e02b4d; padding: 15px; margin: 20px 0; font-style: italic; }
+        .footer { text-align: center; padding-top: 20px; border-top: 1px solid #eee; margin-top: 20px; font-size: 12px; color: #777; }
+      </style>
+    </head>
+    <body>
+      <div class="container">
+        <div class="header">
+          <h1>${isFrench ? 'Nouveau message de contact' : 'New Contact Message'}</h1>
+        </div>
+        <div class="content">
+          <p><strong>${isFrench ? 'Nom' : 'Name'} :</strong> ${name}</p>
+          <p><strong>${isFrench ? 'Email' : 'Email'} :</strong> ${email}</p>
+          <p><strong>${isFrench ? 'Sujet' : 'Subject'} :</strong> ${subject}</p>
+          <p><strong>${isFrench ? 'Message' : 'Message'} :</strong></p>
+          <div class="message-box"><p>${message.replace(/\n/g, '<br>')}</p></div>
+          <hr>
+          <p><small><strong>${consentText} :</strong> ${consentValue}</small></p>
+        </div>
+        <div class="footer">
+          <p>${isFrench ? 'Ceci est un email automatique, merci de ne pas y répondre.' : 'This is an automated email, please do not reply.'}</p>
+          <p>&copy; ${new Date().getFullYear()} SONGRE.</p>
+        </div>
+      </div>
+    </body>
+    </html>
+  `;
+}
 
 export default async function (req: VercelRequest, res: VercelResponse) {
+  // Vercel handles body parsing automatically for application/json and application/x-www-form-urlencoded
+  // but we should check if it's present.
   if (req.method !== 'POST') {
     return res.status(405).json({ success: false, error: 'Method Not Allowed' });
   }
 
-  const { name, email, subject, message, gdpr_consent, _language } = req.body;
+  const body = req.body || {};
+  const { name, email, subject, message, gdpr_consent, _language } = body;
+
+  if (!name || !email || !message) {
+    return res.status(400).json({ success: false, error: 'Missing required fields (name, email, message)' });
+  }
 
   const RESEND_API_KEY = process.env.RESEND_API_KEY;
   const CONTACT_EMAIL_TO = process.env.CONTACT_EMAIL_TO;
   const CONTACT_EMAIL_FROM = process.env.CONTACT_EMAIL_FROM;
 
-  if (!RESEND_API_KEY) {
-    console.error('RESEND_API_KEY is not set.');
-    return res.status(500).json({ success: false, error: 'Configuration error: RESEND_API_KEY missing' });
-  }
-  if (!CONTACT_EMAIL_TO) {
-    console.error('CONTACT_EMAIL_TO is not set.');
-    return res.status(500).json({ success: false, error: 'Configuration error: CONTACT_EMAIL_TO missing' });
-  }
-  if (!CONTACT_EMAIL_FROM) {
-    console.error('CONTACT_EMAIL_FROM is not set.');
-    return res.status(500).json({ success: false, error: 'Configuration error: CONTACT_EMAIL_FROM missing' });
+  if (!RESEND_API_KEY || !CONTACT_EMAIL_TO || !CONTACT_EMAIL_FROM) {
+    console.error('Missing environment variables');
+    return res.status(500).json({ success: false, error: 'Server configuration error' });
   }
 
   try {
     const resend = new Resend(RESEND_API_KEY);
-
     const { data, error } = await resend.emails.send({
       from: `SONGRE <${CONTACT_EMAIL_FROM}>`,
       to: [CONTACT_EMAIL_TO],
-      subject: `[SONGRE] ${subject}: ${name}`,
-      html: generateEmailHtml(name as string, email as string, subject as string, message as string, gdpr_consent as string, (_language as string) || 'fr'),
+      subject: `[SONGRE] ${subject || 'Contact'}: ${name}`,
+      html: generateEmailHtml(name, email, subject || 'Contact', message, gdpr_consent || 'no', _language || 'fr'),
     });
 
     if (error) {
-      console.error('Resend email error:', error);
-      return res.status(400).json({ success: false, error: `Failed to send email: ${error?.message || 'Unknown error'}` });
+      console.error('Resend error:', error);
+      return res.status(400).json({ success: false, error: error.message });
     }
 
-    if (data) {
-      return res.status(200).json({ success: true });
-    }
+    return res.status(200).json({ success: true });
   } catch (err) {
-    console.error('Internal server error in contact API:', err);
+    console.error('API Error:', err);
     return res.status(500).json({ success: false, error: 'Internal server error' });
   }
 }
