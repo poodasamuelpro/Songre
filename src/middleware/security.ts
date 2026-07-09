@@ -4,7 +4,7 @@ import type { Context, Next } from 'hono';
 const rateLimitStore = new Map<string, { count: number; reset: number }>();
 
 export function rateLimit(maxRequests = 30, windowMs = 60000) {
-  return async function(c: Context, next: Next) {
+  return async function (c: Context, next: Next) {
     const ip =
       c.req.header('CF-Connecting-IP') ||
       c.req.header('X-Forwarded-For')?.split(',')[0].trim() ||
@@ -28,10 +28,11 @@ export function rateLimit(maxRequests = 30, windowMs = 60000) {
       c.header('X-RateLimit-Remaining', String(maxRequests - entry.count));
     }
 
-    // Cleanup old entries periodically
     if (rateLimitStore.size > 10000) {
       const cutoff = now - windowMs;
-      rateLimitStore.forEach((v, k) => { if (v.reset < cutoff) rateLimitStore.delete(k); });
+      rateLimitStore.forEach((v, k) => {
+        if (v.reset < cutoff) rateLimitStore.delete(k);
+      });
     }
 
     await next();
@@ -55,33 +56,35 @@ export async function securityHeaders(c: Context, next: Next) {
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
       "font-src 'self' https://fonts.gstatic.com data:",
       "img-src 'self' data: https:",
-      "connect-src 'self'",
+      // ⚠️ Si le front (Cloudflare) et l'API (Vercel) sont sur des domaines
+      // différents, il FAUT lister le domaine de l'API ici, sinon le
+      // navigateur bloque le fetch() côté client même si le CORS serveur est OK.
+      "connect-src 'self' https://songre.poodasamuel.com https://songre.vercel.app",
       "frame-ancestors 'none'",
       "base-uri 'self'",
-      "form-action 'self'"
+      "form-action 'self' https://songre.poodasamuel.com https://songre.vercel.app",
     ].join('; ')
   );
-  c.header(
-    'Strict-Transport-Security',
-    'max-age=31536000; includeSubDomains; preload'
-  );
+  c.header('Strict-Transport-Security', 'max-age=31536000; includeSubDomains; preload');
 }
 
 // ─── CORS Middleware ──────────────────────────────────────────────────────
+// Domaines de confiance autorisés à appeler l'API en cross-origin.
+// Le domaine réel du site (songre.poodasamuel.com) est maintenant inclus.
+const trustedOrigins = [
+  'https://songre.poodasamuel.com',
+  'https://songre.bf',
+  'https://songre.com',
+  'https://songre.vercel.app',
+  'http://localhost:3000',
+  'http://localhost:5173',
+];
+
 export async function corsMiddleware(c: Context, next: Next) {
   const origin = c.req.header('Origin');
-  
-  // Liste des domaines de confiance
-  const trustedDomains = [
-    'songre.bf',
-    'songre.com',
-    'songre.vercel.app',
-    'localhost'
-  ];
+  const isTrusted = !!origin && trustedOrigins.includes(origin);
 
-  const isTrusted = origin && trustedDomains.some(domain => origin.includes(domain));
-
-  if (origin && isTrusted) {
+  if (isTrusted) {
     c.header('Access-Control-Allow-Origin', origin);
     c.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
     c.header('Access-Control-Allow-Headers', 'Content-Type, Accept');
