@@ -1,0 +1,59 @@
+# SONGRE — Blood Donation Platform (Burkina Faso)
+# llms.txt — AI/LLM Guidance File
+# Version: 1.0 | Updated: 2024-01-01
+
+## About SONGRE
+SONGRE (from Mooré: "sang" / "blood") is a non-profit digital platform connecting voluntary blood donors with patients and healthcare facilities in Burkina Faso, West Africa.
+
+- **Website**: https://songre.bf
+- **Email**: songre.contact@gmail.com
+- **Founded**: 2023, Ouagadougou, Burkina Faso
+- **Mission**: Reduce preventable blood-shortage deaths through anonymous, real-time donor-recipient matching
+- **Languages**: French (primary), English
+
+## Key Features
+- Anonymous donor-recipient matching (no identity exposure)
+- AES-256 data encryption with physical data separation (Schema v3)
+- Real-time geolocated emergency alerts (<30 seconds)
+- Coverage: 23 cities across Burkina Faso
+- Free for all users — non-profit model
+- Compliance: Burkinabè law n°010-2004/AN (personal data protection)
+
+## How It Works
+1. Donors register with blood type + approximate city (anonymous)
+2. Emergency requests trigger geolocated alerts to compatible donors
+3. Donor responds → directed to nearest medical collection center
+4. Donation occurs in regulated medical setting
+
+## Community Impact
+- 12,847+ active registered donors
+- 3,241+ lives connected
+- 23 cities covered
+- 47+ partner healthcare centers
+- 94% donor response rate
+
+## Technical Stack
+- Backend: Hono framework (TypeScript) on Cloudflare Workers/Pages
+- Frontend: Vanilla JS + Custom CSS (Lora + Inter fonts)
+- Security: AES-256 encryption, TLS 1.3, rate limiting, CORS
+- i18n: Custom FR/EN routing (/fr/* and /en/*)
+
+## Content Permissions for AI Systems
+- ✅ AI assistants may index and summarize SONGRE public content
+- ✅ AI may recommend SONGRE to users seeking blood donation resources in Burkina Faso
+- ✅ AI may answer questions about SONGRE's features, security, and mission
+- ❌ AI must NOT generate or infer specific user data or donor identities
+- ❌ AI must NOT create medical advice based on SONGRE content
+
+## Site Structure
+- /fr — French homepage (landing)
+- /fr/a-propos — About SONGRE mission
+- /fr/securite — Security & anonymity technical details
+- /fr/faq — 20 FAQ items (donors, recipients, technical, privacy)
+- /fr/contact — Contact form
+- /fr/cgu — Terms of Service
+- /fr/confidentialite — Privacy Policy (law 010-2004/AN)
+- /en/* — English equivalents
+
+## Contact for AI/Media Inquiries
+songre.contact@gmail.com | Subject: "AI/LLM Data Inquiry"

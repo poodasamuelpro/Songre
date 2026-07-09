@@ -1,0 +1,38 @@
+{
+  "name": "SONGRE — Don de Sang",
+  "short_name": "SONGRE",
+  "description": "Plateforme de don de sang au Burkina Faso. Anonyme, sécurisée, disponible 24h/24.",
+  "start_url": "/fr",
+  "display": "standalone",
+  "background_color": "#FAF6F4",
+  "theme_color": "#C81E3A",
+  "orientation": "portrait-primary",
+  "lang": "fr",
+  "categories": ["health", "medical", "social"],
+  "icons": [
+    {
+      "src": "/logo-songre.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo-songre.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Urgence Don de Sang",
+      "url": "/fr",
+      "description": "Déclencher une urgence sang"
+    },
+    {
+      "name": "FAQ",
+      "url": "/fr/faq",
+      "description": "Questions fréquentes"
+    }
+  ]
+}

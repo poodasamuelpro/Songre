@@ -1,14 +1,23 @@
-import build from '@hono/vite-build/cloudflare-pages'
-import devServer from '@hono/vite-dev-server'
-import adapter from '@hono/vite-dev-server/cloudflare'
-import { defineConfig } from 'vite'
+import { defineConfig } from 'vite';
+import build from '@hono/vite-build/cloudflare-pages';
 
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
   plugins: [
-    build(),
-    devServer({
-      adapter,
-      entry: 'src/index.tsx'
-    })
-  ]
-})
+    build({
+      entry: 'src/index.tsx',
+    }),
+  ],
+  build: {
+    outDir: 'dist',
+    minify: 'esbuild',
+    sourcemap: mode === 'development',
+    target: 'es2022',
+    rollupOptions: {
+      external: ['__STATIC_CONTENT_MANIFEST'],
+    },
+  },
+  esbuild: {
+    jsxFactory: 'jsx',
+    jsxFragment: 'Fragment',
+  },
+}));

@@ -1,0 +1,32 @@
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(self), payment=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+
+/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/logo-songre.png
+  Cache-Control: public, max-age=31536000, immutable
+
+/manifest.json
+  Cache-Control: public, max-age=86400
+  Content-Type: application/manifest+json
+
+/sitemap.xml
+  Cache-Control: public, max-age=86400
+  Content-Type: application/xml
+
+/robots.txt
+  Cache-Control: public, max-age=86400
+
+/llms.txt
+  Cache-Control: public, max-age=86400
+  Content-Type: text/plain
+
+/api/*
+  Cache-Control: no-store, no-cache
+  X-Robots-Tag: noindex

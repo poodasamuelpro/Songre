@@ -1,20 +1,33 @@
 {
-  "name": "webapp",
+  "name": "songre-webapp",
   "type": "module",
+  "version": "1.0.0",
+  "description": "SONGRE — Plateforme de don de sang au Burkina Faso",
+  "author": "SONGRE Team <songre.contact@gmail.com>",
+  "license": "UNLICENSED",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "wrangler pages dev",
-    "deploy": "npm run build && wrangler pages deploy",
+    "preview": "wrangler pages dev dist",
+    "dev:sandbox": "wrangler pages dev dist --ip 0.0.0.0 --port 3000",
+    "deploy": "npm run build && wrangler pages deploy dist",
+    "clean": "rm -rf dist",
+    "clean:port": "fuser -k 3000/tcp 2>/dev/null || true",
+    "typecheck": "tsc --noEmit",
     "cf-typegen": "wrangler types --env-interface CloudflareBindings"
   },
   "dependencies": {
     "hono": "^4.12.27"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260702.1",
     "@hono/vite-build": "^1.2.0",
     "@hono/vite-dev-server": "^0.25.2",
+    "@types/node": "^22.0.0",
     "vite": "^6.3.5",
     "wrangler": "^4.4.0"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }

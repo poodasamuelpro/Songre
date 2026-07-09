@@ -1,0 +1,16 @@
+# SONGRE — Cloudflare Pages Redirects
+
+# Root to French (default)
+/              /fr              302
+
+# Legacy redirects
+/home          /fr              301
+/about         /fr/a-propos     301
+/contact       /fr/contact      301
+/faq           /fr/faq          301
+/security      /fr/securite     301
+/terms         /fr/cgu          301
+/privacy       /fr/confidentialite 301
+
+# SPA fallback (for dynamic routes)
+/*             /index.html      200
