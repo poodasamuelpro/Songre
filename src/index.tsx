@@ -11,9 +11,6 @@ import { cguPage, privacyPage } from './routes/legal';
 import { getBaseUrl } from './utils/seo';
 
 type Bindings = {
-  RESEND_API_KEY: string;
-  CONTACT_EMAIL_TO: string;
-  CONTACT_EMAIL_FROM: string;
   BASE_URL: string;
 };
 
@@ -84,8 +81,5 @@ app.get('/:locale/confidentialite', (c) => {
 });
 
 app.get('/:locale/privacy', (c) => c.redirect(`/${c.req.param('locale')}/confidentialite`));
-
-// NOTE: The /api/contact route is now handled by a dedicated Vercel Serverless Function in api/contact.ts
-// to avoid environment variable access issues in Hono on Vercel.
 
 export default app;
