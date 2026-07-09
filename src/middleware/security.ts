@@ -69,17 +69,18 @@ export async function securityHeaders(c: Context, next: Next) {
 // ─── CORS Middleware ──────────────────────────────────────────────────────
 export async function corsMiddleware(c: Context, next: Next) {
   const origin = c.req.header('Origin');
-  const allowed = [
-    'https://songre.bf',
-    'https://www.songre.bf',
-    'https://songre.com',
-    'https://www.songre.com',
-    'https://songre.vercel.app',
-    'http://localhost:3000',
-    'http://localhost:5173',
+  
+  // Liste des domaines de confiance
+  const trustedDomains = [
+    'songre.bf',
+    'songre.com',
+    'songre.vercel.app',
+    'localhost'
   ];
 
-  if (origin && allowed.includes(origin)) {
+  const isTrusted = origin && trustedDomains.some(domain => origin.includes(domain));
+
+  if (origin && isTrusted) {
     c.header('Access-Control-Allow-Origin', origin);
     c.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
     c.header('Access-Control-Allow-Headers', 'Content-Type, Accept');

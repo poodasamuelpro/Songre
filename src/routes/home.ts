@@ -1,18 +1,18 @@
 import type { TranslationKey } from '../utils/translations';
 import { t } from '../utils/translations';
-import { seoData, generateHead } from '../utils/seo';
+import { getSeoData, generateHead } from '../utils/seo';
 import { layout } from '../utils/components';
 
-export function homePage(locale: TranslationKey, path: string): string {
+export function homePage(locale: TranslationKey, path: string, baseUrl: string): string {
   const tr = t(locale);
-  const seo = seoData[locale].home;
+  const seo = getSeoData(baseUrl)[locale].home;
 
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: 'SONGRE',
-    url: 'https://songre.vercel.app',
-    logo: 'https://songre.vercel.app/logo-songre.png',
+    url: baseUrl,
+    logo: `${baseUrl}/logo-songre.png`,
     description: seo.description,
     contactPoint: {
       '@type': 'ContactPoint',
@@ -56,7 +56,7 @@ export function homePage(locale: TranslationKey, path: string): string {
               <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.7 9.05 7.37c1.57.07 2.65.83 3.57.9 1.36-.28 2.66-1.05 4.1-.95 1.72.14 3.04.82 3.87 2.1-3.56 2.12-2.72 7.02.73 8.46-.42 1.12-.98 2.22-1.27 2.4zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
               ${tr.cta.downloadIos}
             </a>
-            <a href="${locale === 'fr' ? '/fr/a-propos' : '/en/about'}" class="btn btn-outline btn-lg">
+            <a href="${locale === 'fr' ? `/${locale}/a-propos` : `/${locale}/about`}" class="btn btn-outline btn-lg">
               ${tr.cta.learnMore} →
             </a>
           </div>
@@ -273,68 +273,39 @@ export function homePage(locale: TranslationKey, path: string): string {
               { label: locale === 'fr' ? 'Centres partenaires' : 'Partner centers', value: '47+', icon: '🏥' },
               { label: locale === 'fr' ? 'Taux de réponse' : 'Response rate', value: '94%', icon: '✅' },
               { label: locale === 'fr' ? 'Note moyenne' : 'Average rating', value: '4.9/5', icon: '⭐' },
-            ].map(item => `
-              <div style="background:white; padding:1.25rem; border-radius:var(--radius-md); border:1px solid var(--border);">
-                <div style="font-size:1.5rem; margin-bottom:0.5rem;">${item.icon}</div>
-                <div style="font-size:1.5rem; font-weight:700; font-family:var(--font-serif); color:var(--primary);">${item.value}</div>
-                <div style="font-size:0.85rem; color:var(--text-muted);">${item.label}</div>
+            ].map(stat => `
+              <div class="impact-stat-card">
+                <div class="impact-stat-icon">${stat.icon}</div>
+                <div class="impact-stat-val">${stat.value}</div>
+                <div class="impact-stat-label">${stat.label}</div>
               </div>
             `).join('')}
           </div>
         </div>
-        <div class="reveal-right" style="background:white; border-radius:var(--radius-lg); padding:2.5rem; box-shadow:var(--shadow-md); border:1px solid var(--border);">
-          <h3 style="margin-bottom:1.5rem; font-size:1.1rem;">${locale === 'fr' ? '📍 Couverture géographique' : '📍 Geographic coverage'}</h3>
-          ${[
-            { city: 'Ouagadougou', donors: '7 842', bar: 90 },
-            { city: 'Bobo-Dioulasso', donors: '2 156', bar: 65 },
-            { city: 'Koudougou', donors: '891', bar: 40 },
-            { city: 'Banfora', donors: '634', bar: 30 },
-            { city: 'Ouahigouya', donors: '512', bar: 25 },
-          ].map(item => `
-            <div style="margin-bottom:1.25rem;">
-              <div style="display:flex; justify-content:space-between; margin-bottom:0.375rem;">
-                <span style="font-size:0.9rem; font-weight:500;">${item.city}</span>
-                <span style="font-size:0.85rem; color:var(--primary); font-weight:600;">${item.donors} ${locale === 'fr' ? 'donneurs' : 'donors'}</span>
+        <div class="reveal-right">
+          <div class="impact-visual">
+            <div class="impact-circle"></div>
+            <div class="impact-circle"></div>
+            <div class="impact-data-card">
+              <div class="data-card-title">${locale === 'fr' ? 'Données en temps réel' : 'Real-time data'}</div>
+              <div class="data-card-row">
+                <span>${locale === 'fr' ? 'Poches requises' : 'Units needed'}</span>
+                <span class="text-primary">124</span>
               </div>
-              <div style="height:6px; background:var(--bg); border-radius:99px; overflow:hidden;">
-                <div style="height:100%; width:${item.bar}%; background:linear-gradient(90deg,var(--primary),var(--primary-light)); border-radius:99px;"></div>
+              <div class="data-card-row">
+                <span>${locale === 'fr' ? 'Donneurs actifs' : 'Active donors'}</span>
+                <span class="text-primary">2,841</span>
+              </div>
+              <div class="data-card-progress">
+                <div class="progress-bar" style="width: 85%;"></div>
               </div>
             </div>
-          `).join('')}
+          </div>
         </div>
       </div>
     </div>
   </section>
+  `;
 
-  <!-- ── DOWNLOAD CTA ──────────────────────────────────────── -->
-  <section class="section download-section" id="download" aria-label="${locale === 'fr' ? 'Télécharger l\'application' : 'Download the app'}">
-    <div class="container">
-      <div class="download-content text-center">
-        <img src="/logo-songre.png" alt="SONGRE" width="80" height="80" style="margin-bottom:1.5rem; border-radius:16px;" class="reveal">
-        <h2 class="download-title reveal">
-          ${locale === 'fr' ? 'Téléchargez SONGRE' : 'Download SONGRE'}
-        </h2>
-        <p class="download-desc reveal">${locale === 'fr' ? 'Disponible sur iOS et Android. Gratuit. Toujours.' : 'Available on iOS and Android. Free. Always.'}</p>
-        <div class="app-badges" style="justify-content:center;" aria-label="${locale === 'fr' ? 'Liens de téléchargement' : 'Download links'}">
-          <a href="#" class="app-badge app-badge-ios reveal" aria-label="App Store">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.7 9.05 7.37c1.57.07 2.65.83 3.57.9 1.36-.28 2.66-1.05 4.1-.95 1.72.14 3.04.82 3.87 2.1-3.56 2.12-2.72 7.02.73 8.46-.42 1.12-.98 2.22-1.27 2.4zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
-            <div>
-              <span class="badge-sub">${locale === 'fr' ? 'Télécharger sur' : 'Download on the'}</span>
-              <span class="badge-main">App Store</span>
-            </div>
-          </a>
-          <a href="#" class="app-badge app-badge-android reveal reveal-delay-1" aria-label="Google Play">
-            <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28"><path d="M3.18 23.76c.3.17.64.24.99.2L15.34 12 11.67 8.34 3.18 23.76zM20.9 10.56l-2.91-1.65-3.65 3.64 3.64 3.64 2.95-1.67c.84-.48.84-1.49-.03-1.96zM2.01 1.05C1.98 1.2 2 1.36 2 1.53v20.93c0 .17.02.33.07.48l.1.09 11.7-11.7v-.29L2.11.96l-.1.09z"/></svg>
-            <div>
-              <span class="badge-sub">${locale === 'fr' ? 'Disponible sur' : 'Get it on'}</span>
-              <span class="badge-main">Google Play</span>
-            </div>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>`;
-
-  const head = generateHead(seo, jsonLd);
-  return layout(locale, path, head, content);
+  return layout(locale, path, generateHead(seo, baseUrl), content);
 }
