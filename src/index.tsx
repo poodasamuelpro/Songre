@@ -7,8 +7,6 @@ import { aboutPage } from './routes/about';
 import { securityPage } from './routes/security';
 import { faqPage } from './routes/faq';
 import { contactPage } from './routes/contact';
-import { Resend } from 'resend';
-import { generateEmailHtml } from './utils/emailTemplate';
 import { cguPage, privacyPage } from './routes/legal';
 import { getBaseUrl } from './utils/seo';
 
@@ -87,52 +85,7 @@ app.get('/:locale/confidentialite', (c) => {
 
 app.get('/:locale/privacy', (c) => c.redirect(`/${c.req.param('locale')}/confidentialite`));
 
-// ─── API: CONTACT FORM (RESEND) ─────────────────────────────────────────────
-app.post('/api/contact', async (c) => {
-  const body = await c.req.parseBody();
-  const { name, email, subject, message, gdpr_consent } = body;
-
-  const apiKey = c.env.RESEND_API_KEY;
-  const toEmail = c.env.CONTACT_EMAIL_TO;
-  const fromEmail = c.env.CONTACT_EMAIL_FROM;
-
-    if (!apiKey) {
-      console.error('RESEND_API_KEY is not set.');
-      return c.json({ success: false, error: 'Configuration error: RESEND_API_KEY missing' }, 500);
-    }
-    if (!toEmail) {
-      console.error('CONTACT_EMAIL_TO is not set.');
-      return c.json({ success: false, error: 'Configuration error: CONTACT_EMAIL_TO missing' }, 500);
-    }
-    if (!fromEmail) {
-      console.error('CONTACT_EMAIL_FROM is not set.');
-      return c.json({ success: false, error: 'Configuration error: CONTACT_EMAIL_FROM missing' }, 500);
-    }
-
-  try {
-    console.log("Attempting to initialize Resend with API Key: ", apiKey ? "*****" + apiKey.substring(apiKey.length - 4) : "(empty)");
-    const resend = new Resend(apiKey);
-
-    console.log("Attempting to send email to: ", toEmail, " from: ", fromEmail, " subject: ", subject);
-    const { data, error } = await resend.emails.send({
-      from: `SONGRE <${fromEmail}>`,
-      to: [toEmail],
-      subject: `[SONGRE] ${subject}: ${name}`,
-      html: generateEmailHtml(name as string, email as string, subject as string, message as string, gdpr_consent as string, (body._language as string) || 'fr'),
-    });
-
-    if (error) {
-      console.error('Resend email error:', error);
-      return c.json({ success: false, error: `Failed to send email: ${error?.message || 'Unknown error'}` }, 400);
-    }
-
-    if (data) {
-      return c.json({ success: true });
-    }
-  } catch (err) {
-    console.error('Internal server error in contact API:', err);
-    return c.json({ success: false, error: 'Internal server error' }, 500);
-  }
-});
+// NOTE: The /api/contact route is now handled by a dedicated Vercel Serverless Function in api/contact.ts
+// to avoid environment variable access issues in Hono on Vercel.
 
 export default app;

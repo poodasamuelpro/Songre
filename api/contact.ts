@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { Resend } from 'resend';
-import { generateEmailHtml } from '../src/utils/emailTemplate';
+import { generateEmailHtml } from '../src/utils/emailTemplate.js';
 
 export default async function (req: VercelRequest, res: VercelResponse) {
   if (req.method !== 'POST') {
