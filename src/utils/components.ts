@@ -69,7 +69,7 @@ export function footer(locale: TranslationKey): string {
       <div class="container">
         <div class="footer-grid">
           <div class="footer-brand">
-            <a href="/${locale}" class="footer-logo">
+            <a href="/${locale}" class="footer-logo" aria-label="SONGRE">
               <img src="/logo-songre.png" alt="SONGRE" width="60" height="60">
               <div>
                 <span class="footer-logo-name">SONGRE</span>
@@ -114,7 +114,6 @@ export function footer(locale: TranslationKey): string {
               <li><a href="${cguHref}">${t(locale).nav.cgu}</a></li>
               <li><a href="${privacyHref}">${t(locale).nav.privacy}</a></li>
               <li><a href="${prefix}/contact">${locale === 'fr' ? 'Signalement' : 'Report'}</a></li>
-              <li><a href="/sitemap.xml">Sitemap</a></li>
             </ul>
           </div>
 
@@ -138,6 +137,7 @@ export function footer(locale: TranslationKey): string {
             </div>
             <div class="footer-contact-info">
               <p>📧 songre.contact@gmail.com</p>
+              <p>📞 +226 77 98 02 64</p>
               <p>📍 Ouagadougou, Burkina Faso</p>
             </div>
           </div>
@@ -147,7 +147,7 @@ export function footer(locale: TranslationKey): string {
     <div class="footer-bottom">
       <div class="container">
         <p>${tr.footer.rights}</p>
-        <p>${tr.footer.madeIn}</p>
+        <p class="footer-dev-status">${tr.footer.madeIn}</p>
       </div>
     </div>
   </footer>`;

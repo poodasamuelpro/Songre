@@ -4,7 +4,7 @@ module.exports = {
       name: 'songre',
       script: 'npx',
       args: 'wrangler pages dev dist --ip 0.0.0.0 --port 3000',
-      cwd: '/home/user/webapp',
+      cwd: '/home/user/songre-repo',
       env: {
         NODE_ENV: 'development',
         PORT: 3000

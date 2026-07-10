@@ -33,7 +33,7 @@ export function aboutPage(locale: TranslationKey, path: string, baseUrl: string)
         <span class="breadcrumb-sep">›</span>
         <span>${locale === 'fr' ? 'À Propos' : 'About'}</span>
       </nav>
-      <div class="page-hero-badge reveal">❤️ ${locale === 'fr' ? 'Notre Mission' : 'Our Mission'}</div>
+      <div class="page-hero-badge reveal">${locale === 'fr' ? 'Notre Mission' : 'Our Mission'}</div>
       <h1 class="page-hero-title reveal">${tr.about.title}</h1>
       <p class="page-hero-desc reveal">${tr.about.subtitle}</p>
     </div>
@@ -44,7 +44,7 @@ export function aboutPage(locale: TranslationKey, path: string, baseUrl: string)
     <div class="container">
       <div class="grid" style="grid-template-columns:1fr 1fr; gap:4rem; align-items:center;">
         <div class="reveal-left">
-          <div class="section-badge mb-3">📖 ${locale === 'fr' ? 'Notre Histoire' : 'Our Story'}</div>
+          <div class="section-badge mb-3">${locale === 'fr' ? 'Notre Histoire' : 'Our Story'}</div>
           <h2 style="margin-bottom:1.5rem;">${locale === 'fr' ? 'Comment SONGRE est né' : 'How SONGRE was born'}</h2>
           <p style="color:var(--text-muted); margin-bottom:1.25rem; line-height:1.8;">${tr.about.story}</p>
           <p style="color:var(--text-muted); margin-bottom:1.25rem; line-height:1.8;">
@@ -61,7 +61,7 @@ export function aboutPage(locale: TranslationKey, path: string, baseUrl: string)
             <p style="color:var(--text-muted); font-style:italic;">${locale === 'fr' ? '"Sang" en langue Mooré' : '"Blood" in Mooré language'}</p>
             <div style="margin-top:2rem; padding-top:2rem; border-top:1px solid rgba(200,30,58,0.15);">
               <p style="color:var(--text-muted); font-size:0.9rem;">
-                ${locale === 'fr' ? '🇧🇫 Fondée en 2023 à Ouagadougou' : '🇧🇫 Founded in 2023 in Ouagadougou'}
+                ${locale === 'fr' ? '🇧🇫 Projet 2026 · Ouagadougou' : '🇧🇫 Project 2026 · Ouagadougou'}
               </p>
             </div>
           </div>
@@ -74,12 +74,12 @@ export function aboutPage(locale: TranslationKey, path: string, baseUrl: string)
   <section class="section" style="background:var(--bg);">
     <div class="container">
       <div class="section-header text-center">
-        <div class="section-badge reveal">🔍 ${locale === 'fr' ? 'Contexte' : 'Context'}</div>
+        <div class="section-badge reveal">${locale === 'fr' ? 'Contexte' : 'Context'}</div>
         <h2 class="section-title reveal">${locale === 'fr' ? 'Le Problème, Notre Réponse' : 'The Problem, Our Response'}</h2>
       </div>
       <div class="grid grid-2">
         <div class="problem-card reveal">
-          <h3>⚠️ ${tr.about.problemTitle}</h3>
+          <h3>${tr.about.problemTitle}</h3>
           <p style="margin-top:1rem; line-height:1.8; color:var(--text-muted);">${tr.about.problemText}</p>
           <ul style="margin-top:1rem; padding-left:1.5rem; color:var(--text-muted); line-height:2;">
             <li>${locale === 'fr' ? 'Banques de sang insuffisantes' : 'Insufficient blood banks'}</li>
@@ -89,7 +89,7 @@ export function aboutPage(locale: TranslationKey, path: string, baseUrl: string)
           </ul>
         </div>
         <div class="solution-card reveal reveal-delay-1">
-          <h3>✅ ${tr.about.solutionTitle}</h3>
+          <h3>${tr.about.solutionTitle}</h3>
           <p style="margin-top:1rem; line-height:1.8; color:var(--text-muted);">${tr.about.solutionText}</p>
           <ul style="margin-top:1rem; padding-left:1.5rem; color:var(--text-muted); line-height:2;">
             <li>${locale === 'fr' ? 'Réseau de donneurs géolocalisés' : 'Geolocated donor network'}</li>
@@ -106,15 +106,15 @@ export function aboutPage(locale: TranslationKey, path: string, baseUrl: string)
   <section class="section" style="background:white;">
     <div class="container">
       <div class="section-header text-center">
-        <div class="section-badge reveal">🌟 ${tr.about.values}</div>
+        <div class="section-badge reveal">${tr.about.values}</div>
         <h2 class="section-title reveal">${locale === 'fr' ? 'Ce Qui Nous Guide' : 'What Guides Us'}</h2>
       </div>
       <div class="grid grid-4">
         ${[
-          { icon: '🤝', title: tr.about.value1, desc: locale === 'fr' ? 'Chaque être humain mérite d\'accéder au sang dont il a besoin, sans barrière financière ni géographique.' : 'Every human being deserves access to the blood they need, without financial or geographic barriers.' },
-          { icon: '🔏', title: tr.about.value2, desc: locale === 'fr' ? 'Votre identité est sacrée. SONGRE a été conçu de zéro avec l\'anonymat comme pilier fondamental.' : 'Your identity is sacred. SONGRE was built from scratch with anonymity as a fundamental pillar.' },
-          { icon: '🏆', title: tr.about.value3, desc: locale === 'fr' ? 'Nous ne faisons aucune concession sur la qualité du code, de l\'expérience utilisateur et de la sécurité.' : 'We make no concessions on code quality, user experience and security.' },
-          { icon: '🫂', title: tr.about.value4, desc: locale === 'fr' ? 'SONGRE est un projet communautaire. Les donneurs, les receveurs et l\'équipe forment une seule famille.' : 'SONGRE is a community project. Donors, recipients and the team form one family.' },
+          { icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>', title: tr.about.value1, desc: locale === 'fr' ? 'Chaque être humain mérite d\'accéder au sang dont il a besoin, sans barrière financière ni géographique.' : 'Every human being deserves access to the blood they need, without financial or geographic barriers.' },
+          { icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>', title: tr.about.value2, desc: locale === 'fr' ? 'Votre identité est sacrée. SONGRE a été conçu de zéro avec l\'anonymat comme pilier fondamental.' : 'Your identity is sacred. SONGRE was built from scratch with anonymity as a fundamental pillar.' },
+          { icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>', title: tr.about.value3, desc: locale === 'fr' ? 'Nous ne faisons aucune concession sur la qualité du code, de l\'expérience utilisateur et de la sécurité.' : 'We make no concessions on code quality, user experience and security.' },
+          { icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>', title: tr.about.value4, desc: locale === 'fr' ? 'SONGRE est un projet communautaire. Les donneurs, les receveurs et l\'équipe forment une seule famille.' : 'SONGRE is a community project. Donors, recipients and the team form one family.' },
         ].map((v, i) => `
           <div class="value-card reveal ${i > 0 ? 'reveal-delay-' + i : ''}">
             <span class="value-icon">${v.icon}</span>
@@ -126,30 +126,34 @@ export function aboutPage(locale: TranslationKey, path: string, baseUrl: string)
     </div>
   </section>
 
-  <!-- ── TEAM ───────────────────────────────────────────────── -->
+  <!-- ── CREATOR ─────────────────────────────────────────────── -->
   <section class="section" style="background:var(--bg);">
     <div class="container">
       <div class="section-header text-center">
-        <div class="section-badge reveal">👥 ${tr.about.teamTitle}</div>
-        <h2 class="section-title reveal">${locale === 'fr' ? 'Les Bâtisseurs de SONGRE' : 'The Builders of SONGRE'}</h2>
-        <p class="section-desc reveal">${locale === 'fr' ? 'Une équipe passionnée, unie par une seule mission : sauver des vies.' : 'A passionate team, united by one mission: save lives.'}</p>
+        <div class="section-badge reveal">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          ${locale === 'fr' ? 'Le créateur' : 'The Creator'}
+        </div>
+        <h2 class="section-title reveal">${locale === 'fr' ? 'Un projet signé POODA Samuel' : 'A project by POODA Samuel'}</h2>
+        <p class="section-desc reveal">${locale === 'fr' ? 'SONGRE est un projet indépendant, né d\'une vision simple : connecter les donneurs de sang aux patients de façon anonyme et sécurisée.' : 'SONGRE is an independent project, born from a simple vision: connect blood donors to patients anonymously and securely.'}</p>
       </div>
-      <div class="grid grid-3">
-        ${[
-          { emoji: '👨🏾‍💻', name: 'Oumar Traoré', role: locale === 'fr' ? 'Fondateur & CEO' : 'Founder & CEO', bio: locale === 'fr' ? 'Développeur full-stack, 8 ans d\'expérience. Passionné de santé publique.' : 'Full-stack developer, 8 years of experience. Passionate about public health.' },
-          { emoji: '👩🏾‍⚕️', name: 'Dr. Rasmata Nikiema', role: locale === 'fr' ? 'Directrice Médicale' : 'Medical Director', bio: locale === 'fr' ? 'Médecin transfusiologue. Experte en banques de sang d\'Afrique de l\'Ouest.' : 'Transfusion medicine doctor. Expert in West African blood banks.' },
-          { emoji: '👨🏾‍🎨', name: 'Boureima Sawadogo', role: locale === 'fr' ? 'Lead Designer' : 'Lead Designer', bio: locale === 'fr' ? 'Designer UX/UI spécialisé dans les applications de santé pour marchés africains.' : 'UX/UI designer specialized in health apps for African markets.' },
-          { emoji: '👩🏾‍💻', name: 'Fatimata Coulibaly', role: locale === 'fr' ? 'CTO' : 'CTO', bio: locale === 'fr' ? 'Architecte cloud, spécialiste sécurité et chiffrement des données de santé.' : 'Cloud architect, specialist in health data security and encryption.' },
-          { emoji: '👨🏾‍⚖️', name: 'Issa Compaoré', role: locale === 'fr' ? 'Conseiller Juridique' : 'Legal Counsel', bio: locale === 'fr' ? 'Juriste spécialisé en protection des données et droit de la santé burkinabè.' : 'Jurist specialized in data protection and Burkinabè health law.' },
-          { emoji: '👩🏾‍📊', name: 'Aïchata Diallo', role: locale === 'fr' ? 'Responsable Partenariats' : 'Partnerships Manager', bio: locale === 'fr' ? 'Coordonne les relations avec les hôpitaux, centres de santé et ONG partenaires.' : 'Coordinates relationships with partner hospitals, health centers and NGOs.' },
-        ].map((m, i) => `
-          <div class="team-card reveal ${i > 0 ? 'reveal-delay-' + (i % 4) : ''}">
-            <div class="team-avatar">${m.emoji}</div>
-            <div class="team-name">${m.name}</div>
-            <div class="team-role">${m.role}</div>
-            <p class="team-bio">${m.bio}</p>
+      <div class="about-creator-card reveal">
+        <div class="creator-avatar">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <div class="creator-info">
+          <h3 class="creator-name">POODA Samuel</h3>
+          <p class="creator-role">${locale === 'fr' ? 'Fondateur &amp; Développeur — Burkina Faso' : 'Founder &amp; Developer — Burkina Faso'}</p>
+          <p class="creator-bio">
+            ${locale === 'fr'
+              ? 'SONGRE est conçu et développé de A à Z par POODA Samuel. L\'application est actuellement en développement actif. Ce projet est porté par une conviction : chaque citoyen devrait pouvoir contribuer à sauver une vie, simplement et en toute sécurité.'
+              : 'SONGRE is designed and developed entirely by POODA Samuel. The app is currently in active development. This project is driven by one conviction: every citizen should be able to help save a life, simply and safely.'}
+          </p>
+          <div class="creator-status">
+            <span class="status-dot"></span>
+            ${locale === 'fr' ? 'En cours de développement · 2026' : 'In development · 2026'}
           </div>
-        `).join('')}
+        </div>
       </div>
     </div>
   </section>

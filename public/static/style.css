@@ -360,8 +360,8 @@ a:hover { color: var(--primary-dark); }
   position: relative;
 }
 .hero-phone-mockup {
-  width: 280px;
-  height: 560px;
+  width: 240px;
+  height: 480px;
   background: var(--text);
   border-radius: 40px;
   position: relative;
@@ -426,7 +426,7 @@ a:hover { color: var(--primary-dark); }
   align-items: center;
   gap: 0.75rem;
 }
-.alert-icon { font-size: 1.25rem; }
+.alert-icon { display: flex; align-items: center; color: var(--primary-light); flex-shrink: 0; }
 .alert-text { color: white; font-size: 0.7rem; line-height: 1.4; }
 .alert-text strong { color: var(--primary-light); display: block; font-size: 0.75rem; }
 .phone-btn {
@@ -456,7 +456,10 @@ a:hover { color: var(--primary-dark); }
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.25rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--primary);
+  font-family: var(--font-sans);
 }
 .orbit-dot:nth-child(1) { top: -24px; left: 50%; transform: translateX(-50%); }
 .orbit-dot:nth-child(2) { bottom: -24px; left: 50%; transform: translateX(-50%); }
@@ -823,6 +826,7 @@ a:hover { color: var(--primary-dark); }
   justify-content: center;
   font-size: 1.75rem;
   margin-bottom: 1.5rem;
+  color: var(--primary);
 }
 .security-title { margin-bottom: 0.875rem; }
 .security-desc { color: var(--text-muted); line-height: 1.8; }
@@ -1251,6 +1255,148 @@ textarea.form-control { min-height: 150px; resize: vertical; }
 .mt-4 { margin-top: 2rem; }
 .italic { font-style: italic; }
 .font-serif { font-family: var(--font-serif); }
+
+/* ── Creator Card (About Page) ──────────────────────────────── */
+.about-creator-card {
+  display: flex;
+  gap: 2.5rem;
+  align-items: flex-start;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-sm);
+  max-width: 780px;
+  margin: 0 auto;
+}
+.creator-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--primary-ultra-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--primary);
+}
+.creator-info { flex: 1; }
+.creator-name {
+  font-size: 1.4rem;
+  margin-bottom: 0.25rem;
+  color: var(--text);
+}
+.creator-role {
+  color: var(--primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+.creator-bio {
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+.creator-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--success);
+  background: var(--success-light);
+  padding: 0.35rem 1rem;
+  border-radius: var(--radius-xl);
+}
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--success);
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.7); }
+}
+@media (max-width: 600px) {
+  .about-creator-card { flex-direction: column; gap: 1.5rem; padding: 1.5rem; }
+  .creator-avatar { margin: 0 auto; }
+  .creator-info { text-align: center; }
+  .creator-status { justify-content: center; }
+}
+
+/* ── Value Icons (SVG) ──────────────────────────────────────── */
+.value-icon svg { width: 2rem; height: 2rem; stroke: var(--primary); }
+.value-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--primary-ultra-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+}
+
+/* ── Author Avatar Icon (Testimonials) ──────────────────────── */
+.author-avatar-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--primary-ultra-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--primary);
+}
+
+/* ── Footer Dev Status ──────────────────────────────────────── */
+.footer-dev-status {
+  font-weight: 500;
+  color: rgba(255,255,255,0.7);
+}
+
+/* ── Feature Icon (SVG) ─────────────────────────────────────── */
+.feature-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  background: var(--primary-ultra-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  color: var(--primary);
+  transition: all var(--transition);
+}
+.feature-card:hover .feature-icon {
+  background: var(--primary);
+  color: white;
+}
+
+/* ── Step Icon (SVG) ────────────────────────────────────────── */
+.step-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--primary-ultra-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+  color: var(--primary);
+}
+
+/* ── Impact Stat Icon (SVG) ─────────────────────────────────── */
+.impact-stat-icon {
+  color: var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
 
 /* ── Blood Type Pills ───────────────────────────────────────── */
 .blood-types {

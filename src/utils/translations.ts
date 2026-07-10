@@ -16,8 +16,8 @@ export const translations = {
     footer: {
       tagline: 'Chaque don est un acte d\'amour',
       legal: 'Mentions légales',
-      rights: '© 2024 SONGRE. Tous droits réservés.',
-      madeIn: 'Fait avec ❤️ au Burkina Faso',
+      rights: '© 2026 SONGRE. Tous droits réservés.',
+      madeIn: 'Projet 2026 — en cours de développement',
     },
     cta: {
       downloadIos: 'Télécharger sur App Store',
@@ -114,11 +114,11 @@ export const translations = {
     },
     cgu: {
       title: 'Conditions Générales d\'Utilisation',
-      lastUpdate: 'Dernière mise à jour : 1er janvier 2024',
+      lastUpdate: 'Dernière mise à jour : 1er janvier 2026',
     },
     privacy: {
       title: 'Politique de Confidentialité',
-      lastUpdate: 'Dernière mise à jour : 1er janvier 2024',
+      lastUpdate: 'Dernière mise à jour : 1er janvier 2026',
     },
   },
   en: {
@@ -135,8 +135,8 @@ export const translations = {
     footer: {
       tagline: 'Every donation is an act of love',
       legal: 'Legal notice',
-      rights: '© 2024 SONGRE. All rights reserved.',
-      madeIn: 'Made with ❤️ in Burkina Faso',
+      rights: '© 2026 SONGRE. All rights reserved.',
+      madeIn: 'Project 2026 — in development',
     },
     cta: {
       downloadIos: 'Download on App Store',
@@ -233,11 +233,11 @@ export const translations = {
     },
     cgu: {
       title: 'Terms of Service',
-      lastUpdate: 'Last updated: January 1, 2024',
+      lastUpdate: 'Last updated: January 1, 2026',
     },
     privacy: {
       title: 'Privacy Policy',
-      lastUpdate: 'Last updated: January 1, 2024',
+      lastUpdate: 'Last updated: January 1, 2026',
     },
   },
 };

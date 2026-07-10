@@ -103,29 +103,21 @@ export function homePage(locale: TranslationKey, path: string, baseUrl: string):
     </div>
   </section>
 
-  <!-- ── STATS ─────────────────────────────────────────────── -->
-  <section class="stats-section" aria-label="${locale === 'fr' ? 'Impact statistiques' : 'Impact statistics'}">
+  <!-- ── STATS BANNER ─────────────────────────────────────────── -->
+  <section class="stats-section" aria-label="${locale === 'fr' ? 'Informations clés' : 'Key information'}">
     <div class="container">
       <div class="stats-grid">
         <div class="stat-item reveal">
-          <span class="stat-number">
-            <span class="count-up" data-target="12847" data-suffix="">12 847</span>
-            <span class="stat-plus">+</span>
-          </span>
-          <span class="stat-label">${tr.stats.donors}</span>
+          <span class="stat-number">8</span>
+          <span class="stat-label">${locale === 'fr' ? 'Groupes sanguins' : 'Blood types'}</span>
         </div>
         <div class="stat-item reveal reveal-delay-1">
-          <span class="stat-number">
-            <span class="count-up" data-target="3241" data-suffix="">3 241</span>
-            <span class="stat-plus">+</span>
-          </span>
-          <span class="stat-label">${tr.stats.saved}</span>
+          <span class="stat-number">100%</span>
+          <span class="stat-label">${locale === 'fr' ? 'Anonyme' : 'Anonymous'}</span>
         </div>
         <div class="stat-item reveal reveal-delay-2">
-          <span class="stat-number">
-            <span class="count-up" data-target="23" data-suffix="">23</span>
-          </span>
-          <span class="stat-label">${tr.stats.cities}</span>
+          <span class="stat-number">0</span>
+          <span class="stat-label">${locale === 'fr' ? 'Profit' : 'Profit'}</span>
         </div>
         <div class="stat-item reveal reveal-delay-3">
           <span class="stat-number">24h</span>
@@ -145,19 +137,25 @@ export function homePage(locale: TranslationKey, path: string, baseUrl: string):
       </div>
       <div class="steps-grid">
         <div class="step-card reveal">
-          <span class="step-icon">📱</span>
+          <span class="step-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          </span>
           <div class="step-number">01</div>
           <h3 class="step-title">${tr.home.step1Title}</h3>
           <p class="step-desc">${tr.home.step1Desc}</p>
         </div>
         <div class="step-card reveal reveal-delay-1">
-          <span class="step-icon">🔔</span>
+          <span class="step-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          </span>
           <div class="step-number">02</div>
           <h3 class="step-title">${tr.home.step2Title}</h3>
           <p class="step-desc">${tr.home.step2Desc}</p>
         </div>
         <div class="step-card reveal reveal-delay-2">
-          <span class="step-icon">❤️</span>
+          <span class="step-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </span>
           <div class="step-number">03</div>
           <h3 class="step-title">${tr.home.step3Title}</h3>
           <p class="step-desc">${tr.home.step3Desc}</p>
@@ -170,27 +168,35 @@ export function homePage(locale: TranslationKey, path: string, baseUrl: string):
   <section class="section features-section" id="features">
     <div class="container">
       <div class="section-header text-center">
-        <div class="section-badge reveal">💡 ${locale === 'fr' ? 'Nos avantages' : 'Our advantages'}</div>
+        <div class="section-badge reveal">${locale === 'fr' ? 'Nos avantages' : 'Our advantages'}</div>
         <h2 class="section-title reveal">${tr.home.featuresTitle}</h2>
       </div>
       <div class="grid grid-4">
         <div class="feature-card reveal">
-          <div class="feature-icon">🔒</div>
+          <div class="feature-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
           <h3 class="feature-title">${tr.home.feature1Title}</h3>
           <p class="feature-desc">${tr.home.feature1Desc}</p>
         </div>
         <div class="feature-card reveal reveal-delay-1">
-          <div class="feature-icon">⚡</div>
+          <div class="feature-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
           <h3 class="feature-title">${tr.home.feature2Title}</h3>
           <p class="feature-desc">${tr.home.feature2Desc}</p>
         </div>
         <div class="feature-card reveal reveal-delay-2">
-          <div class="feature-icon">💚</div>
+          <div class="feature-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </div>
           <h3 class="feature-title">${tr.home.feature3Title}</h3>
           <p class="feature-desc">${tr.home.feature3Desc}</p>
         </div>
         <div class="feature-card reveal reveal-delay-3">
-          <div class="feature-icon">⚖️</div>
+          <div class="feature-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
           <h3 class="feature-title">${tr.home.feature4Title}</h3>
           <p class="feature-desc">${tr.home.feature4Desc}</p>
         </div>
@@ -202,7 +208,7 @@ export function homePage(locale: TranslationKey, path: string, baseUrl: string):
   <section class="section" style="background:white;" id="blood-types">
     <div class="container">
       <div class="section-header text-center">
-        <div class="section-badge reveal">🩸 ${locale === 'fr' ? 'Tous les groupes' : 'All blood types'}</div>
+        <div class="section-badge reveal">${locale === 'fr' ? 'Tous les groupes' : 'All blood types'}</div>
         <h2 class="section-title reveal">${locale === 'fr' ? 'Tous les Groupes Sanguins Acceptés' : 'All Blood Types Accepted'}</h2>
         <p class="section-desc reveal">${locale === 'fr' ? 'SONGRE couvre l\'ensemble des groupes sanguins ABO et Rhésus.' : 'SONGRE covers all ABO and Rh blood types.'}</p>
       </div>
@@ -211,8 +217,8 @@ export function homePage(locale: TranslationKey, path: string, baseUrl: string):
       </div>
       <p class="text-center text-muted" style="margin-top:2rem; font-size:0.95rem;">
         ${locale === 'fr' 
-          ? '🩸 <strong>O−</strong> est le groupe sanguin universel. Les porteurs O− peuvent donner à tout le monde.' 
-          : '🩸 <strong>O−</strong> is the universal blood type. O− donors can give to everyone.'}
+          ? '<strong>O−</strong> est le groupe sanguin universel. Les porteurs O− peuvent donner à tout le monde.' 
+          : '<strong>O−</strong> is the universal blood type. O− donors can give to everyone.'}
       </p>
     </div>
   </section>
@@ -221,7 +227,7 @@ export function homePage(locale: TranslationKey, path: string, baseUrl: string):
   <section class="section testimonials-section" id="testimonials">
     <div class="container">
       <div class="section-header text-center">
-        <div class="section-badge reveal">💬 ${locale === 'fr' ? 'Témoignages' : 'Testimonials'}</div>
+        <div class="section-badge reveal">${locale === 'fr' ? 'Témoignages' : 'Testimonials'}</div>
         <h2 class="section-title reveal">${tr.home.testimonialsTitle}</h2>
       </div>
       <div class="grid grid-3">
@@ -231,7 +237,9 @@ export function homePage(locale: TranslationKey, path: string, baseUrl: string):
             ? '"Grâce à SONGRE, j\'ai pu trouver un donneur de groupe O+ en moins de 20 minutes pour mon fils hospitalisé d\'urgence. Cette application m\'a rendu mon enfant."'
             : '"Thanks to SONGRE, I found an O+ donor in under 20 minutes for my son in emergency. This app gave me back my child."'}</p>
           <div class="testimonial-author">
-            <div class="author-avatar">👩🏾</div>
+            <div class="author-avatar-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
             <div><div class="author-name">Aminata K.</div><div class="author-role">${locale === 'fr' ? 'Mère, Ouagadougou' : 'Mother, Ouagadougou'}</div></div>
           </div>
         </article>
@@ -241,7 +249,9 @@ export function homePage(locale: TranslationKey, path: string, baseUrl: string):
             ? '"Je donne du sang depuis 5 ans, mais c\'était toujours compliqué de savoir quand et où. SONGRE a tout simplifié. Je reçois une alerte, je réponds, je donne. C\'est humain."'
             : '"I\'ve been donating blood for 5 years, but it was always complicated to know when and where. SONGRE simplified everything. I get an alert, I respond, I donate. It\'s human."'}</p>
           <div class="testimonial-author">
-            <div class="author-avatar">👨🏾</div>
+            <div class="author-avatar-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
             <div><div class="author-name">Ibrahim O.</div><div class="author-role">${locale === 'fr' ? 'Donneur régulier, Bobo-Dioulasso' : 'Regular donor, Bobo-Dioulasso'}</div></div>
           </div>
         </article>
@@ -251,7 +261,9 @@ export function homePage(locale: TranslationKey, path: string, baseUrl: string):
             ? '"En tant que médecin, je recommande SONGRE à tous mes patients et collègues. L\'anonymat et la rapidité du système sont exactement ce dont nos hôpitaux avaient besoin."'
             : '"As a doctor, I recommend SONGRE to all my patients and colleagues. The anonymity and speed of the system is exactly what our hospitals needed."'}</p>
           <div class="testimonial-author">
-            <div class="author-avatar">👩🏾‍⚕️</div>
+            <div class="author-avatar-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
             <div><div class="author-name">Dr. Fatoumata S.</div><div class="author-role">${locale === 'fr' ? 'Médecin, CHU Yalgado' : 'Doctor, CHU Yalgado'}</div></div>
           </div>
         </article>
@@ -264,18 +276,22 @@ export function homePage(locale: TranslationKey, path: string, baseUrl: string):
     <div class="container">
       <div class="grid" style="grid-template-columns:1fr 1fr; gap:4rem; align-items:center;">
         <div class="reveal-left">
-          <div class="section-badge mb-3">📊 ${locale === 'fr' ? 'Notre Impact' : 'Our Impact'}</div>
-          <h2 style="margin-bottom:1.5rem;">${tr.home.impactTitle}</h2>
-          <p style="color:var(--text-muted); margin-bottom:2rem;">${tr.home.impactDesc}</p>
+          <div class="section-badge mb-3">${locale === 'fr' ? 'Notre Engagement' : 'Our Commitment'}</div>
+          <h2 style="margin-bottom:1.5rem;">${locale === 'fr' ? 'Pourquoi SONGRE compte' : 'Why SONGRE matters'}</h2>
+          <p style="color:var(--text-muted); margin-bottom:2rem;">${locale === 'fr' ? 'Au Burkina Faso, la pénurie de sang est une réalité quotidienne. SONGRE est une réponse concrète, gratuite et sécurisée.' : 'In Burkina Faso, blood shortage is a daily reality. SONGRE is a concrete, free and secure response.'}</p>
           <div class="grid" style="grid-template-columns:1fr 1fr; gap:1.5rem;">
             ${[
-              { label: locale === 'fr' ? 'Groupes sanguins' : 'Blood types', value: '8', icon: '🩸' },
-              { label: locale === 'fr' ? 'Centres partenaires' : 'Partner centers', value: '47+', icon: '🏥' },
-              { label: locale === 'fr' ? 'Taux de réponse' : 'Response rate', value: '94%', icon: '✅' },
-              { label: locale === 'fr' ? 'Note moyenne' : 'Average rating', value: '4.9/5', icon: '⭐' },
+              { label: locale === 'fr' ? 'Groupes sanguins' : 'Blood types', value: '8',
+                svgIcon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg>' },
+              { label: locale === 'fr' ? 'Anonymat garanti' : 'Guaranteed privacy', value: '100%',
+                svgIcon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>' },
+              { label: locale === 'fr' ? 'Gratuit' : 'Free forever', value: locale === 'fr' ? 'Toujours' : 'Always',
+                svgIcon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>' },
+              { label: locale === 'fr' ? 'Disponibilité' : 'Availability', value: '24/7',
+                svgIcon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>' },
             ].map(stat => `
               <div class="impact-stat-card">
-                <div class="impact-stat-icon">${stat.icon}</div>
+                <div class="impact-stat-icon">${stat.svgIcon}</div>
                 <div class="impact-stat-val">${stat.value}</div>
                 <div class="impact-stat-label">${stat.label}</div>
               </div>
@@ -287,17 +303,17 @@ export function homePage(locale: TranslationKey, path: string, baseUrl: string):
             <div class="impact-circle"></div>
             <div class="impact-circle"></div>
             <div class="impact-data-card">
-              <div class="data-card-title">${locale === 'fr' ? 'Données en temps réel' : 'Real-time data'}</div>
+              <div class="data-card-title">${locale === 'fr' ? 'Application en développement' : 'App in development'}</div>
               <div class="data-card-row">
-                <span>${locale === 'fr' ? 'Poches requises' : 'Units needed'}</span>
-                <span class="text-primary">124</span>
+                <span>${locale === 'fr' ? 'Statut' : 'Status'}</span>
+                <span class="text-primary">${locale === 'fr' ? 'En cours' : 'Active'}</span>
               </div>
               <div class="data-card-row">
-                <span>${locale === 'fr' ? 'Donneurs actifs' : 'Active donors'}</span>
-                <span class="text-primary">2,841</span>
+                <span>${locale === 'fr' ? 'Groupes sanguins' : 'Blood types'}</span>
+                <span class="text-primary">A, B, AB, O</span>
               </div>
               <div class="data-card-progress">
-                <div class="progress-bar" style="width: 85%;"></div>
+                <div class="progress-bar" style="width: 65%;"></div>
               </div>
             </div>
           </div>

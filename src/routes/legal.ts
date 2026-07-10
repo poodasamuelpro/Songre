@@ -77,7 +77,11 @@ export function cguPage(locale: TranslationKey, path: string, baseUrl: string): 
   <p>Les présentes CGU sont soumises au droit burkinabè. En cas de litige, les parties s'engagent à rechercher une solution amiable. À défaut d'accord, les tribunaux compétents de Ouagadougou, Burkina Faso, auront compétence exclusive.</p>
 
   <h2>12. Contact</h2>
-  <p>Pour toute question relative aux présentes CGU, contactez-nous à : <a href="mailto:songre.contact@gmail.com">songre.contact@gmail.com</a></p>
+  <p>Pour toute question relative aux présentes CGU, contactez-nous à :</p>
+  <ul>
+    <li>Email : <a href="mailto:songre.contact@gmail.com">songre.contact@gmail.com</a></li>
+    <li>Téléphone / WhatsApp : +226 77 98 02 64</li>
+  </ul>
   `;
 
   const enContent = `
@@ -112,7 +116,11 @@ export function cguPage(locale: TranslationKey, path: string, baseUrl: string): 
   <p>These Terms are governed by Burkinabè law. Any disputes shall be submitted to the competent courts of Ouagadougou, Burkina Faso.</p>
 
   <h2>10. Contact</h2>
-  <p>For questions regarding these Terms: <a href="mailto:songre.contact@gmail.com">songre.contact@gmail.com</a></p>
+  <p>For questions regarding these Terms:</p>
+  <ul>
+    <li>Email: <a href="mailto:songre.contact@gmail.com">songre.contact@gmail.com</a></li>
+    <li>Phone / WhatsApp: +226 77 98 02 64</li>
+  </ul>
   `;
 
   const content = `
@@ -239,7 +247,11 @@ export function privacyPage(locale: TranslationKey, path: string, baseUrl: strin
   <p>Toute modification substantielle de cette politique sera notifiée aux utilisateurs via l'application 15 jours avant sa mise en vigueur.</p>
 
   <h2>11. Contact DPO</h2>
-  <p>Pour toute question relative à la protection de vos données : <a href="mailto:songre.contact@gmail.com">songre.contact@gmail.com</a> — Objet : "Protection des données"</p>
+  <p>Pour toute question relative à la protection de vos données :</p>
+  <ul>
+    <li>Email : <a href="mailto:songre.contact@gmail.com">songre.contact@gmail.com</a> — Objet : "Protection des données"</li>
+    <li>Téléphone / WhatsApp : +226 77 98 02 64</li>
+  </ul>
   <p>Autorité de contrôle : <strong>ANPDP</strong> — Autorité Nationale de Protection des Données à Caractère Personnel du Burkina Faso</p>
   `;
 
