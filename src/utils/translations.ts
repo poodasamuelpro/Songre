@@ -17,7 +17,6 @@ export const translations = {
       tagline: 'Chaque don est un acte d\'amour',
       legal: 'Mentions légales',
       rights: '© 2026 SONGRE. Tous droits réservés.',
-      madeIn: 'Projet 2026 — en cours de développement',
     },
     cta: {
       downloadIos: 'Télécharger sur App Store',
@@ -136,7 +135,6 @@ export const translations = {
       tagline: 'Every donation is an act of love',
       legal: 'Legal notice',
       rights: '© 2026 SONGRE. All rights reserved.',
-      madeIn: 'Project 2026 — in development',
     },
     cta: {
       downloadIos: 'Download on App Store',
