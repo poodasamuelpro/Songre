@@ -390,7 +390,7 @@ a:hover { color: var(--primary-dark); }
 .phone-screen {
   flex: 1;
   width: 100%;
-  background: linear-gradient(160deg, #1a0f10 0%, #2d0f1a 100%);
+  background: var(--creme, #FAF6F4);
   padding: 1.75rem 1.25rem 1rem;
   display: flex;
   flex-direction: column;
@@ -404,13 +404,13 @@ a:hover { color: var(--primary-dark); }
   align-items: center;
   justify-content: space-between;
   padding-bottom: 0.85rem;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-bottom: 1px solid var(--border);
 }
 .phone-brand {
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  color: white;
+  color: var(--text);
   font-family: var(--font-serif);
   font-weight: 700;
   font-size: 0.85rem;
@@ -419,12 +419,12 @@ a:hover { color: var(--primary-dark); }
 .phone-icon-btn {
   width: 28px; height: 28px;
   border-radius: 50%;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
+  background: white;
+  border: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255,255,255,0.8);
+  color: var(--text-muted);
   flex-shrink: 0;
 }
 
@@ -481,13 +481,13 @@ a:hover { color: var(--primary-dark); }
 .phone-section-label {
   font-size: 0.6rem;
   font-weight: 700;
-  color: rgba(255,255,255,0.45);
+  color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.05em;
 }
 .phone-demande-card {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: white;
+  border: 1px solid var(--border);
   border-radius: 12px;
   padding: 0.75rem;
   display: flex;
@@ -497,8 +497,8 @@ a:hover { color: var(--primary-dark); }
 .phone-groupe-badge {
   width: 36px; height: 36px;
   border-radius: 10px;
-  background: rgba(200,30,58,0.22);
-  color: var(--primary-light);
+  background: var(--success-light);
+  color: var(--success);
   font-family: var(--font-serif);
   font-weight: 800;
   font-size: 0.75rem;
@@ -507,8 +507,8 @@ a:hover { color: var(--primary-dark); }
   justify-content: center;
   flex-shrink: 0;
 }
-.phone-demande-title { color: white; font-size: 0.75rem; font-weight: 600; }
-.phone-demande-meta { color: rgba(255,255,255,0.5); font-size: 0.65rem; margin-top: 0.1rem; }
+.phone-demande-title { color: var(--text); font-size: 0.75rem; font-weight: 600; }
+.phone-demande-meta { color: var(--text-muted); font-size: 0.65rem; margin-top: 0.1rem; }
 
 /* Phone bottom nav */
 .phone-bottomnav {
@@ -516,16 +516,16 @@ a:hover { color: var(--primary-dark); }
   align-items: center;
   justify-content: space-around;
   padding: 0.7rem 0.5rem;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  background: rgba(0,0,0,0.15);
+  border-top: 1px solid var(--border);
+  background: white;
 }
 .phone-navitem {
   font-size: 0.55rem;
   font-weight: 600;
-  color: rgba(255,255,255,0.4);
+  color: var(--text-light);
   text-align: center;
 }
-.phone-navitem.active { color: var(--primary-light); }
+.phone-navitem.active { color: var(--primary); }
 .phone-navitem-icon { display: block; margin: 0 auto 3px; }
 
 /* Phone form fields (showcase: create request) */
@@ -533,22 +533,22 @@ a:hover { color: var(--primary-dark); }
 .phone-field label {
   font-size: 0.6rem;
   font-weight: 700;
-  color: rgba(255,255,255,0.45);
+  color: var(--text-muted);
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
 .phone-select {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.15);
+  background: white;
+  border: 1.5px solid var(--border);
   border-radius: 10px;
   padding: 0.6rem 0.75rem;
-  color: white;
+  color: var(--text);
   font-size: 0.72rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
-.phone-select span { color: rgba(255,255,255,0.4); }
+.phone-select span { color: var(--text-light); }
 .phone-btn-primary {
   background: var(--primary);
   color: white;
@@ -576,11 +576,11 @@ a:hover { color: var(--primary-dark); }
   font-weight: 800;
   font-size: 1rem;
 }
-.phone-profile-name { color: white; text-align: center; font-size: 0.8rem; font-weight: 700; font-family: var(--font-serif); }
-.phone-profile-sub { color: rgba(255,255,255,0.5); text-align: center; font-size: 0.65rem; margin-top: -0.5rem; }
+.phone-profile-name { color: var(--text); text-align: center; font-size: 0.8rem; font-weight: 700; font-family: var(--font-serif); }
+.phone-profile-sub { color: var(--text-muted); text-align: center; font-size: 0.65rem; margin-top: -0.5rem; }
 .phone-toggle-card {
-  background: rgba(47,125,92,0.18);
-  border: 1px solid rgba(47,125,92,0.3);
+  background: var(--success-light);
+  border: 1px solid rgba(47,125,92,0.25);
   border-radius: 12px;
   padding: 0.7rem 0.85rem;
   display: flex;
@@ -588,8 +588,8 @@ a:hover { color: var(--primary-dark); }
   justify-content: space-between;
   gap: 0.5rem;
 }
-.phone-toggle-title { color: #7fd6ac; font-size: 0.7rem; font-weight: 700; }
-.phone-toggle-sub { color: rgba(127,214,172,0.7); font-size: 0.58rem; margin-top: 0.15rem; }
+.phone-toggle-title { color: var(--success); font-size: 0.7rem; font-weight: 700; }
+.phone-toggle-sub { color: #4d8a72; font-size: 0.58rem; margin-top: 0.15rem; }
 .phone-switch {
   width: 32px; height: 18px;
   border-radius: 20px;
@@ -609,14 +609,14 @@ a:hover { color: var(--primary-dark); }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: white;
+  border: 1px solid var(--border);
   border-radius: 10px;
   padding: 0.55rem 0.75rem;
   font-size: 0.68rem;
 }
-.phone-info-row span { color: rgba(255,255,255,0.5); }
-.phone-info-row strong { color: white; font-weight: 600; }
+.phone-info-row span { color: var(--text-muted); }
+.phone-info-row strong { color: var(--text); font-weight: 600; }
 
 .hero-orbit {
   position: absolute;
