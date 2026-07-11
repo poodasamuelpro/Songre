@@ -1,10 +1,10 @@
 /* ============================================================
    SONGRE — Design System Global
    Palette: Primary #C81E3A | BG #FAF6F4 | Text #201A1B | Success #2F7D5C
-   Fonts: Lora (Serif) titles, Inter (Sans) body
+   Fonts: Lora (Serif) titles | Inter (Sans) body
    ============================================================ */
 
-/* ── CSS Reset et Variables ─────────────────────────────────── */
+/* ── CSS Reset & Variables ─────────────────────────────────── */
 :root {
   --primary: #C81E3A;
   --primary-dark: #a01530;
@@ -559,17 +559,7 @@ a:hover { color: var(--primary-dark); }
   margin: 0 auto 1.5rem;
   border: 2px solid rgba(200,30,58,0.2);
 }
-.step-icon {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: var(--primary-ultra-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1.25rem;
-  color: var(--primary);
-}
+.step-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
 .step-title { margin-bottom: 0.75rem; }
 .step-desc { color: var(--text-muted); font-size: 0.95rem; }
 
@@ -606,22 +596,6 @@ a:hover { color: var(--primary-dark); }
   box-shadow: var(--shadow-md);
   border-color: rgba(200,30,58,0.2);
   background: white;
-}
-.feature-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: var(--radius-md);
-  background: var(--primary-ultra-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.25rem;
-  color: var(--primary);
-  transition: all var(--transition);
-}
-.feature-card:hover .feature-icon {
-  background: var(--primary);
-  color: white;
 }
 .feature-title { margin-bottom: 0.625rem; font-size: 1.05rem; }
 .feature-desc { color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; }
@@ -714,17 +688,6 @@ a:hover { color: var(--primary-dark); }
   font-size: 1.25rem;
   flex-shrink: 0;
 }
-.author-avatar-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: var(--primary-ultra-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  color: var(--primary);
-}
 .author-name { font-weight: 600; font-size: 0.9rem; }
 .author-role { font-size: 0.8rem; color: var(--text-muted); }
 .stars { color: #f59e0b; font-size: 0.85rem; margin-bottom: 1rem; }
@@ -789,17 +752,6 @@ a:hover { color: var(--primary-dark); }
   background: white;
   box-shadow: var(--shadow-md);
   transform: translateY(-4px);
-}
-.value-icon svg { width: 2rem; height: 2rem; stroke: var(--primary); }
-.value-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: var(--primary-ultra-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1rem;
 }
 .value-title { font-size: 1.1rem; margin-bottom: 0.5rem; }
 .value-desc { color: var(--text-muted); font-size: 0.9rem; }
@@ -1267,7 +1219,7 @@ textarea.form-control { min-height: 150px; resize: vertical; }
 /* ── Counter Animation ──────────────────────────────────────── */
 .count-up { display: inline-block; }
 
-/* ── Loading et Spinner ─────────────────────────────────────── */
+/* ── Loading & Spinner ──────────────────────────────────────── */
 .spinner {
   width: 18px; height: 18px;
   border: 2px solid rgba(255,255,255,0.3);
@@ -1365,13 +1317,160 @@ textarea.form-control { min-height: 150px; resize: vertical; }
   .creator-status { justify-content: center; }
 }
 
-/* ── Impact Stat Icon (SVG) ─────────────────────────────────── */
+/* ── Value Icons (SVG) ──────────────────────────────────────── */
+.value-icon svg { width: 2rem; height: 2rem; stroke: var(--primary); }
+.value-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--primary-ultra-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+}
+
+/* ── Author Avatar Icon (Testimonials) ──────────────────────── */
+.author-avatar-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--primary-ultra-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--primary);
+}
+
+/* ── Footer Dev Status ──────────────────────────────────────── */
+.footer-dev-status {
+  font-weight: 500;
+  color: rgba(255,255,255,0.7);
+}
+
+/* ── Feature Icon (SVG) ─────────────────────────────────────── */
+.feature-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  background: var(--primary-ultra-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  color: var(--primary);
+  transition: all var(--transition);
+}
+.feature-card:hover .feature-icon {
+  background: var(--primary);
+  color: white;
+}
+
+/* ── Step Icon (SVG) ────────────────────────────────────────── */
+.step-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--primary-ultra-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+  color: var(--primary);
+}
+
+/* ── Impact Stat Cards (Home page) ─────────────────────────── */
+.impact-stat-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+  transition: all var(--transition);
+}
+.impact-stat-card:hover {
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-3px);
+  border-color: rgba(200,30,58,0.2);
+}
 .impact-stat-icon {
   color: var(--primary);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 0.5rem;
+}
+.impact-stat-val {
+  font-family: var(--font-serif);
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 0.25rem;
+}
+.impact-stat-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* ── Impact Visual (decorative card + circles) ─────────────── */
+.impact-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 280px;
+  padding: 2rem;
+}
+.impact-circle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.impact-circle:nth-child(1) {
+  width: 260px;
+  height: 260px;
+  top: -10px;
+  left: -10px;
+  background: radial-gradient(circle, rgba(200,30,58,0.08) 0%, transparent 70%);
+}
+.impact-circle:nth-child(2) {
+  width: 180px;
+  height: 180px;
+  bottom: -10px;
+  right: -10px;
+  background: radial-gradient(circle, rgba(47,125,92,0.08) 0%, transparent 70%);
+}
+.impact-data-card {
+  position: relative;
+  z-index: 1;
+  background: white;
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--border);
+  width: 100%;
+  max-width: 340px;
+}
+.data-card-title {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 1.05rem;
+  margin-bottom: 1.25rem;
+  color: var(--text);
+}
+.data-card-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+.data-card-row:last-child {
+  border-bottom: none;
 }
 
 /* ── Blood Type Pills ───────────────────────────────────────── */
@@ -1451,6 +1550,8 @@ textarea.form-control { min-height: 150px; resize: vertical; }
   .app-badges { justify-content: center; }
   .footer-social { justify-content: center; }
   .footer-brand { text-align: center; }
+  .impact-visual { min-height: unset; padding: 1rem 0; }
+  .impact-data-card { max-width: 100%; }
 }
 
 @media (max-width: 480px) {
@@ -1466,4 +1567,3 @@ textarea.form-control { min-height: 150px; resize: vertical; }
   .page-hero { padding-top: 2rem; }
   body { background: white; }
 }
- 
