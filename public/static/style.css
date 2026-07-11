@@ -153,6 +153,7 @@ a:hover { color: var(--primary-dark); }
   height: 100%;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 2rem;
 }
 .nav-logo {
@@ -228,6 +229,7 @@ a:hover { color: var(--primary-dark); }
   border: none;
   cursor: pointer;
   border-radius: var(--radius-sm);
+  margin-left: auto;
 }
 .nav-toggle span {
   display: block;
@@ -1137,7 +1139,7 @@ textarea.form-control { min-height: 150px; resize: vertical; }
   font-style: italic;
 }
 .footer-desc { font-size: 0.9rem; line-height: 1.75; margin-bottom: 1.5rem; }
-.footer-social { display: flex; gap: 0.75rem; }
+.footer-social { display: flex; gap: 0.75rem; flex-wrap: wrap; }
 .social-link {
   width: 38px; height: 38px;
   border-radius: 50%;
@@ -1184,9 +1186,10 @@ textarea.form-control { min-height: 150px; resize: vertical; }
 .footer-bottom .container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 0.75rem;
+  text-align: center;
 }
 .footer-bottom p {
   font-size: 0.85rem;
@@ -1473,6 +1476,8 @@ textarea.form-control { min-height: 150px; resize: vertical; }
   .steps-grid::before { display: none; }
   .download-content { text-align: center; }
   .app-badges { justify-content: center; }
+  .footer-social { justify-content: center; }
+  .footer-brand { text-align: center; }
 }
 
 @media (max-width: 480px) {
