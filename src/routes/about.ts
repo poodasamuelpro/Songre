@@ -16,7 +16,7 @@ export function aboutPage(locale: TranslationKey, path: string, baseUrl: string)
     mainEntity: {
       '@type': 'Organization',
       name: 'SONGRE',
-      foundingDate: '2025',
+      foundingDate: '2026',
       mission: locale === 'fr' ? 'Révolutionner le don de sang au Burkina Faso' : 'Revolutionize blood donation in Burkina Faso',
     },
   };
@@ -49,8 +49,8 @@ export function aboutPage(locale: TranslationKey, path: string, baseUrl: string)
           <p style="color:var(--text-muted); margin-bottom:1.25rem; line-height:1.8;">${tr.about.story}</p>
           <p style="color:var(--text-muted); margin-bottom:1.25rem; line-height:1.8;">
             ${locale === 'fr' 
-              ? 'En 2025, SONGRE voit le jour, un mot mooré qui signifie "aider", pensé pour donner à chaque citoyen le pouvoir de sauver une vie depuis son smartphone.'
-              : 'In 2025, SONGRE was created, a Mooré word meaning "help", designed to empower every citizen to save a life from their smartphone.'}
+              ? 'En 2026, SONGRE voit le jour, un mot mooré qui signifie "aider", pensé pour donner à chaque citoyen le pouvoir de sauver une vie depuis son smartphone.'
+              : 'In 2026, SONGRE was created, a Mooré word meaning "help", designed to empower every citizen to save a life from their smartphone.'}
           </p>
           <p style="color:var(--text-muted); line-height:1.8;">${tr.about.mission}</p>
         </div>
@@ -136,21 +136,6 @@ export function aboutPage(locale: TranslationKey, path: string, baseUrl: string)
         </div>
         <h2 class="section-title reveal">${locale === 'fr' ? 'Un projet signé POODA Samuel' : 'A project by POODA Samuel'}</h2>
         <p class="section-desc reveal">${locale === 'fr' ? 'SONGRE est un projet indépendant, né d\'une vision simple : connecter les donneurs de sang aux patients de façon anonyme et sécurisée.' : 'SONGRE is an independent project, born from a simple vision: connect blood donors to patients anonymously and securely.'}</p>
-      </div>
-      <div class="about-creator-card reveal">
-        <div class="creator-info">
-          <h3 class="creator-name">POODA Samuel</h3>
-          <p class="creator-role">${locale === 'fr' ? 'Fondateur &amp; Développeur — Burkina Faso' : 'Founder &amp; Developer — Burkina Faso'}</p>
-          <p class="creator-bio">
-            ${locale === 'fr'
-              ? 'SONGRE est conçu et développé de A à Z par POODA Samuel. L\'application est actuellement en développement actif. Ce projet est porté par une conviction : chaque citoyen devrait pouvoir contribuer à sauver une vie, simplement et en toute sécurité.'
-              : 'SONGRE is designed and developed entirely by POODA Samuel. The app is currently in active development. This project is driven by one conviction: every citizen should be able to help save a life, simply and safely.'}
-          </p>
-          <div class="creator-status">
-            <span class="status-dot"></span>
-            ${locale === 'fr' ? 'En cours de développement · 2026' : 'In development · 2026'}
-          </div>
-        </div>
       </div>
     </div>
   </section>
