@@ -58,7 +58,7 @@ export function securityPage(locale: TranslationKey, path: string, baseUrl: stri
           <h2 class="security-title">${tr.security.complianceTitle}</h2>
           <p class="security-desc">${tr.security.complianceDesc}</p>
           <div style="margin-top:1.5rem; display:flex; flex-wrap:wrap; gap:0.5rem;">
-            <span class="cert-badge">${locale === 'fr' ? 'Loi n°010-2004/AN' : 'Law n°010-2004/AN'}</span>
+            <span class="cert-badge">${locale === 'fr' ? 'Loi n°001-2021/AN' : 'Law n°001-2021/AN'}</span>
             <span class="cert-badge">${locale === 'fr' ? 'Anonymat par conception' : 'Anonymity by design'}</span>
           </div>
         </div>
@@ -150,7 +150,7 @@ export function securityPage(locale: TranslationKey, path: string, baseUrl: stri
           { label: locale === 'fr' ? 'Zéro publicité' : 'Zero ads', sub: locale === 'fr' ? 'Aucun profilage commercial' : 'No commercial profiling' },
           { label: locale === 'fr' ? 'Aucune revente de données' : 'No data resale', sub: locale === 'fr' ? 'Vos données ne sont jamais monétisées' : 'Your data is never monetized' },
           { label: locale === 'fr' ? 'Anonymat par conception' : 'Anonymity by design', sub: locale === 'fr' ? 'Séparation stricte des données' : 'Strict data separation' },
-          { label: locale === 'fr' ? 'Respect de la loi 010-2004/AN' : 'Compliance with law 010-2004/AN', sub: locale === 'fr' ? 'Protection des données personnelles' : 'Personal data protection' },
+          { label: locale === 'fr' ? 'Respect de la loi 001-2021/AN' : 'Compliance with law 001-2021/AN', sub: locale === 'fr' ? 'Protection des données personnelles' : 'Personal data protection' },
           { label: locale === 'fr' ? 'Transparence totale' : 'Full transparency', sub: locale === 'fr' ? 'Vous savez ce qui est collecté' : 'You know what is collected' },
         ].map((c, i) => `
           <div class="reveal ${i > 0 ? 'reveal-delay-' + (i % 4) : ''}" style="background:white; border-radius:var(--radius-lg); padding:2rem 1.5rem; min-width:180px; text-align:center; box-shadow:var(--shadow-sm); border:1px solid var(--border);">
