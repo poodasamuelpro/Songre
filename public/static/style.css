@@ -1,10 +1,10 @@
 /* ============================================================
    SONGRE — Design System Global
    Palette: Primary #C81E3A | BG #FAF6F4 | Text #201A1B | Success #2F7D5C
-   Fonts: Lora (Serif) titles | Inter (Sans) body
+   Fonts: Lora (Serif) titles, Inter (Sans) body
    ============================================================ */
 
-/* ── CSS Reset & Variables ─────────────────────────────────── */
+/* ── CSS Reset et Variables ─────────────────────────────────── */
 :root {
   --primary: #C81E3A;
   --primary-dark: #a01530;
@@ -559,7 +559,17 @@ a:hover { color: var(--primary-dark); }
   margin: 0 auto 1.5rem;
   border: 2px solid rgba(200,30,58,0.2);
 }
-.step-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+.step-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--primary-ultra-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.25rem;
+  color: var(--primary);
+}
 .step-title { margin-bottom: 0.75rem; }
 .step-desc { color: var(--text-muted); font-size: 0.95rem; }
 
@@ -598,14 +608,20 @@ a:hover { color: var(--primary-dark); }
   background: white;
 }
 .feature-icon {
-  width: 52px; height: 52px;
+  width: 56px;
+  height: 56px;
   border-radius: var(--radius-md);
   background: var(--primary-ultra-light);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
   margin-bottom: 1.25rem;
+  color: var(--primary);
+  transition: all var(--transition);
+}
+.feature-card:hover .feature-icon {
+  background: var(--primary);
+  color: white;
 }
 .feature-title { margin-bottom: 0.625rem; font-size: 1.05rem; }
 .feature-desc { color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; }
@@ -698,6 +714,17 @@ a:hover { color: var(--primary-dark); }
   font-size: 1.25rem;
   flex-shrink: 0;
 }
+.author-avatar-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--primary-ultra-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--primary);
+}
 .author-name { font-weight: 600; font-size: 0.9rem; }
 .author-role { font-size: 0.8rem; color: var(--text-muted); }
 .stars { color: #f59e0b; font-size: 0.85rem; margin-bottom: 1rem; }
@@ -763,10 +790,16 @@ a:hover { color: var(--primary-dark); }
   box-shadow: var(--shadow-md);
   transform: translateY(-4px);
 }
+.value-icon svg { width: 2rem; height: 2rem; stroke: var(--primary); }
 .value-icon {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  display: block;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--primary-ultra-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
 }
 .value-title { font-size: 1.1rem; margin-bottom: 0.5rem; }
 .value-desc { color: var(--text-muted); font-size: 0.9rem; }
@@ -1234,7 +1267,7 @@ textarea.form-control { min-height: 150px; resize: vertical; }
 /* ── Counter Animation ──────────────────────────────────────── */
 .count-up { display: inline-block; }
 
-/* ── Loading & Spinner ──────────────────────────────────────── */
+/* ── Loading et Spinner ─────────────────────────────────────── */
 .spinner {
   width: 18px; height: 18px;
   border: 2px solid rgba(255,255,255,0.3);
@@ -1325,78 +1358,11 @@ textarea.form-control { min-height: 150px; resize: vertical; }
   background: var(--success);
   animation: pulse-dot 2s ease-in-out infinite;
 }
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.7); }
-}
 @media (max-width: 600px) {
   .about-creator-card { flex-direction: column; gap: 1.5rem; padding: 1.5rem; }
   .creator-avatar { margin: 0 auto; }
   .creator-info { text-align: center; }
   .creator-status { justify-content: center; }
-}
-
-/* ── Value Icons (SVG) ──────────────────────────────────────── */
-.value-icon svg { width: 2rem; height: 2rem; stroke: var(--primary); }
-.value-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: var(--primary-ultra-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1rem;
-}
-
-/* ── Author Avatar Icon (Testimonials) ──────────────────────── */
-.author-avatar-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: var(--primary-ultra-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  color: var(--primary);
-}
-
-/* ── Footer Dev Status ──────────────────────────────────────── */
-.footer-dev-status {
-  font-weight: 500;
-  color: rgba(255,255,255,0.7);
-}
-
-/* ── Feature Icon (SVG) ─────────────────────────────────────── */
-.feature-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: var(--radius-md);
-  background: var(--primary-ultra-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.25rem;
-  color: var(--primary);
-  transition: all var(--transition);
-}
-.feature-card:hover .feature-icon {
-  background: var(--primary);
-  color: white;
-}
-
-/* ── Step Icon (SVG) ────────────────────────────────────────── */
-.step-icon {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  background: var(--primary-ultra-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 1.25rem;
-  color: var(--primary);
 }
 
 /* ── Impact Stat Icon (SVG) ─────────────────────────────────── */
