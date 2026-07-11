@@ -1174,10 +1174,17 @@ textarea.form-control { min-height: 150px; resize: vertical; }
 .footer-apps .app-badge {
   padding: 0.625rem 1rem;
 }
-.footer-contact-info p {
+.footer-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   font-size: 0.85rem;
   color: rgba(255,255,255,0.5);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+.footer-contact-item svg {
+  flex-shrink: 0;
+  opacity: 0.7;
 }
 .footer-bottom {
   border-top: 1px solid rgba(255,255,255,0.08);
