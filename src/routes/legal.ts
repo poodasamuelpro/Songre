@@ -170,7 +170,7 @@ export function privacyPage(locale: TranslationKey, path: string, baseUrl: strin
   const frContent = `
   <h2>1. Qui Sommes-Nous ?</h2>
   <p>SONGRE est une plateforme numérique de mise en relation pour le don de sang, opérée par SONGRE, basée à Ouagadougou, Burkina Faso. Contact : <a href="mailto:songre.contact@gmail.com">songre.contact@gmail.com</a></p>
-  <p>Cette politique de confidentialité est rédigée en conformité avec la loi burkinabè n°010-2004/AN du 20 avril 2004 portant protection des données à caractère personnel.</p>
+  <p>Cette politique de confidentialité est rédigée en conformité avec la loi burkinabè n°001-2021/AN du 30 mars 2021 portant protection des personnes à l'égard du traitement des données à caractère personnel.</p>
 
   <h2>2. Données Collectées</h2>
   <h3>2.1 Données d'inscription</h3>
@@ -180,10 +180,10 @@ export function privacyPage(locale: TranslationKey, path: string, baseUrl: strin
     <li>Statut de disponibilité (booléen : disponible/indisponible)</li>
     <li>Date du dernier don (pour respecter les délais légaux)</li>
   </ul>
-  <h3>2.2 Données de contact (stockées séparément et chiffrées)</h3>
+  <h3>2.2 Données de contact</h3>
   <ul>
     <li>Numéro de téléphone ou adresse email (uniquement pour les notifications)</li>
-    <li>Ces données sont séparées des données médicales et ne sont jamais croisées</li>
+    <li>Ces données sont chiffrées et leur accès est strictement limité aux besoins du service</li>
   </ul>
   <h3>2.3 Données techniques</h3>
   <ul>
@@ -201,13 +201,12 @@ export function privacyPage(locale: TranslationKey, path: string, baseUrl: strin
   </ul>
   <p>Nous ne faisons jamais de profilage commercial, de ciblage publicitaire, ou d'analyse de comportement à des fins marketing.</p>
 
-  <h2>4. Séparation des Données, Schéma v3</h2>
-  <p>SONGRE utilise une architecture de séparation stricte des données :</p>
+  <h2>4. Anonymisation et Protection des Données</h2>
+  <p>SONGRE limite au strict nécessaire les informations partagées lors d'une mise en relation :</p>
   <ul>
-    <li><strong>Base A (Identité) :</strong> données de contact, chiffrées AES-256, accès restreint</li>
-    <li><strong>Base B (Médical) :</strong> groupe sanguin, ville, disponibilité, totalement anonymisées</li>
-    <li>Aucun identifiant commun permanent ne relie ces deux bases</li>
-    <li>Un identifiant temporaire à usage unique est créé pour chaque session d'alerte, puis détruit</li>
+    <li>Le groupe sanguin, la ville et le statut de disponibilité sont traités de façon anonymisée lors de l'envoi des alertes</li>
+    <li>Vos données de contact restent chiffrées et leur accès est strictement limité au personnel habilité</li>
+    <li>Un identifiant temporaire à usage unique est généré pour chaque session d'alerte, puis détruit après utilisation</li>
   </ul>
 
   <h2>5. Partage des Données</h2>
@@ -225,7 +224,7 @@ export function privacyPage(locale: TranslationKey, path: string, baseUrl: strin
   </ul>
 
   <h2>7. Vos Droits</h2>
-  <p>Conformément à la loi 010-2004/AN, vous disposez des droits suivants :</p>
+  <p>Conformément à la loi n°001-2021/AN, vous disposez des droits suivants :</p>
   <ul>
     <li><strong>Droit d'accès :</strong> obtenir une copie de vos données</li>
     <li><strong>Droit de rectification :</strong> corriger des informations inexactes</li>
@@ -236,14 +235,7 @@ export function privacyPage(locale: TranslationKey, path: string, baseUrl: strin
   <p>Pour exercer ces droits : <a href="mailto:songre.contact@gmail.com">songre.contact@gmail.com</a>, objet : "Exercice de droits RGPD"</p>
 
   <h2>8. Sécurité</h2>
-  <p>Nous appliquons des mesures de sécurité techniques et organisationnelles conformes à l'état de l'art :</p>
-  <ul>
-    <li>Chiffrement AES-256 des données sensibles au repos</li>
-    <li>TLS 1.3 pour toutes les communications</li>
-    <li>Limitation des accès aux données (principe du moindre privilège)</li>
-    <li>Audits de sécurité réguliers</li>
-    <li>Plan de réponse aux incidents de sécurité</li>
-  </ul>
+  <p>Nous appliquons des mesures de sécurité techniques et organisationnelles conformes à l'état de l'art pour protéger vos données contre tout accès non autorisé, perte ou divulgation. Ces mesures sont revues régulièrement afin de rester adaptées aux risques identifiés.</p>
 
   <h2>9. Cookies</h2>
   <p>Le site web SONGRE utilise uniquement des cookies techniques essentiels au fonctionnement du service (session, préférences de langue). Aucun cookie publicitaire ou de tracking tiers n'est utilisé.</p>
@@ -257,13 +249,12 @@ export function privacyPage(locale: TranslationKey, path: string, baseUrl: strin
     <li>Email : <a href="mailto:songre.contact@gmail.com">songre.contact@gmail.com</a>, Objet : "Protection des données"</li>
     <li>Téléphone / WhatsApp : +226 77 98 02 64</li>
   </ul>
-  <p>Autorité de contrôle : <strong>ANPDP</strong>, Autorité Nationale de Protection des Données à Caractère Personnel du Burkina Faso</p>
   `;
 
   const enContent = `
   <h2>1. Who Are We?</h2>
   <p>SONGRE is a digital blood donation connection platform operated by SONGRE, based in Ouagadougou, Burkina Faso. Contact: <a href="mailto:songre.contact@gmail.com">songre.contact@gmail.com</a></p>
-  <p>This privacy policy is written in compliance with Burkinabè law n°010-2004/AN of April 20, 2004 on personal data protection.</p>
+  <p>This privacy policy is written in compliance with Burkinabè law n°001-2021/AN of March 30, 2021 on the protection of individuals with regard to the processing of personal data.</p>
 
   <h2>2. Data Collected</h2>
   <h3>2.1 Registration data</h3>
@@ -273,23 +264,23 @@ export function privacyPage(locale: TranslationKey, path: string, baseUrl: strin
     <li>Availability status (boolean: available/unavailable)</li>
     <li>Date of last donation (to respect legal intervals)</li>
   </ul>
-  <h3>2.2 Contact data (stored separately and encrypted)</h3>
+  <h3>2.2 Contact data</h3>
   <ul>
     <li>Phone number or email address (for notifications only)</li>
-    <li>This data is separated from medical data and is never crossed</li>
+    <li>This data is encrypted and access is strictly limited to what the service requires</li>
   </ul>
 
   <h2>3. How We Use Your Data</h2>
   <p>Your data is used exclusively to: send you geolocated emergency alerts, allow you to manage your donor profile, and improve service security.</p>
 
-  <h2>4. Data Separation, Schema v3</h2>
-  <p>SONGRE uses a strict data separation architecture: Base A (Identity) and Base B (Medical) have no permanent common identifier.</p>
+  <h2>4. Anonymization and Data Protection</h2>
+  <p>SONGRE limits shared information to what is strictly necessary during a match: blood type, city and availability are handled anonymously when alerts are sent, and contact data remains encrypted with strictly limited access.</p>
 
   <h2>5. Your Rights</h2>
-  <p>In accordance with law 010-2004/AN, you have rights of access, rectification, deletion, opposition, and portability. Contact: <a href="mailto:songre.contact@gmail.com">songre.contact@gmail.com</a></p>
+  <p>In accordance with law n°001-2021/AN, you have rights of access, rectification, deletion, opposition, and portability. Contact: <a href="mailto:songre.contact@gmail.com">songre.contact@gmail.com</a></p>
 
   <h2>6. Security</h2>
-  <p>We apply state-of-the-art security measures: AES-256 encryption at rest, TLS 1.3 for all communications, and regular security audits.</p>
+  <p>We apply technical and organizational security measures consistent with industry standards to protect your data against unauthorized access, loss, or disclosure. These measures are reviewed regularly to remain aligned with identified risks.</p>
   `;
 
   const content = `
