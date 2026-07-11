@@ -74,30 +74,47 @@ export function homePage(locale: TranslationKey, path: string, baseUrl: string):
             <div class="orbit-dot" title="AB+">🆎</div>
           </div>
           <div class="hero-phone-mockup" role="img" aria-label="${locale === 'fr' ? 'Aperçu de l\'application SONGRE' : 'SONGRE app preview'}">
+            <div class="phone-notch"></div>
             <div class="phone-screen">
-              <div class="phone-header">
-                <div class="phone-logo"><img src="/logo-songre.png" alt="SONGRE" width="40" height="40"></div>
-                <div class="phone-title">SONGRE</div>
-              </div>
-              <div class="phone-card">
-                <div class="phone-card-header">
-                  <div class="blood-type-badge">O+</div>
-                  <div class="phone-card-info">
-                    <div class="phone-card-title">${locale === 'fr' ? 'Profil Donneur' : 'Donor Profile'}</div>
-                    <div class="phone-card-sub">${locale === 'fr' ? 'Actif • Ouagadougou' : 'Active • Ouagadougou'}</div>
-                  </div>
+              <div class="phone-topbar">
+                <div class="phone-brand"><img src="/logo-songre.png" alt="SONGRE" width="22" height="22"><span>SONGRE</span></div>
+                <div class="phone-icon-btn">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
                 </div>
               </div>
-              <div class="phone-alert">
-                <div class="alert-icon">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-                </div>
-                <div class="alert-text">
-                  <strong>${locale === 'fr' ? 'URGENCE PROCHE' : 'NEARBY EMERGENCY'}</strong>
-                  ${locale === 'fr' ? 'CHU Yalgado, A+ requis, 2,3 km' : 'CHU Yalgado, A+ needed, 2.3 km'}
+
+              <div class="phone-cta-urgent">
+                <div class="phone-cta-eyebrow">${locale === 'fr' ? 'URGENCE PROCHE' : 'NEARBY EMERGENCY'}</div>
+                <div class="phone-cta-title">${locale === 'fr' ? 'CHU Yalgado, A+ requis, 2,3 km' : 'CHU Yalgado, A+ needed, 2.3 km'}</div>
+                <button class="phone-cta-btn">${locale === 'fr' ? '✓ Je peux donner' : '✓ I can donate'}</button>
+              </div>
+
+              <div class="phone-section-label">${locale === 'fr' ? 'Profil donneur' : 'Donor profile'}</div>
+              <div class="phone-demande-card">
+                <div class="phone-groupe-badge">O+</div>
+                <div class="phone-demande-info">
+                  <div class="phone-demande-title">${locale === 'fr' ? 'Profil Donneur' : 'Donor Profile'}</div>
+                  <div class="phone-demande-meta">${locale === 'fr' ? 'Actif • Ouagadougou' : 'Active • Ouagadougou'}</div>
                 </div>
               </div>
-              <div class="phone-btn">${locale === 'fr' ? '✓ Je peux donner' : '✓ I can donate'}</div>
+            </div>
+            <div class="phone-bottomnav">
+              <div class="phone-navitem active">
+                <svg class="phone-navitem-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                ${locale === 'fr' ? 'Accueil' : 'Home'}
+              </div>
+              <div class="phone-navitem">
+                <svg class="phone-navitem-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg>
+                ${locale === 'fr' ? 'Demandes' : 'Requests'}
+              </div>
+              <div class="phone-navitem">
+                <svg class="phone-navitem-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                ${locale === 'fr' ? 'Alertes' : 'Alerts'}
+              </div>
+              <div class="phone-navitem">
+                <svg class="phone-navitem-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                ${locale === 'fr' ? 'Profil' : 'Profile'}
+              </div>
             </div>
           </div>
         </div>
@@ -321,6 +338,77 @@ export function homePage(locale: TranslationKey, path: string, baseUrl: string):
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── APP SHOWCASE ──────────────────────────────────────── -->
+  <section class="section app-showcase-section" id="app-showcase">
+    <div class="container">
+      <div class="section-header text-center">
+        <div class="section-badge reveal">${locale === 'fr' ? 'Dans l\'application' : 'Inside the app'}</div>
+        <h2 class="section-title reveal">${locale === 'fr' ? 'Découvrez SONGRE en action' : 'See SONGRE in action'}</h2>
+        <p class="section-desc reveal">${locale === 'fr' ? 'Publier une demande et gérer son profil de donneur, en toute simplicité.' : 'Post a request and manage your donor profile, with total simplicity.'}</p>
+      </div>
+      <div class="app-showcase-grid">
+
+        <div class="showcase-phone-wrap reveal">
+          <div class="hero-phone-mockup showcase-phone" role="img" aria-label="${locale === 'fr' ? 'Créer une demande sur SONGRE' : 'Create a request on SONGRE'}">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <div class="phone-topbar">
+                <div class="phone-icon-btn">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+                </div>
+                <div class="phone-brand"><span>${locale === 'fr' ? 'Nouvelle demande' : 'New request'}</span></div>
+                <div style="width:26px;"></div>
+              </div>
+              <div class="phone-field">
+                <label>${locale === 'fr' ? 'Groupe sanguin recherché' : 'Blood type needed'}</label>
+                <div class="phone-select">O− <span>▾</span></div>
+              </div>
+              <div class="phone-field">
+                <label>${locale === 'fr' ? 'Ville' : 'City'}</label>
+                <div class="phone-select">Ouagadougou <span>▾</span></div>
+              </div>
+              <div class="phone-field">
+                <label>${locale === 'fr' ? 'Structure sanitaire' : 'Health facility'}</label>
+                <div class="phone-select">CHU Yalgado Ouédraogo <span>▾</span></div>
+              </div>
+              <button class="phone-btn-primary">${locale === 'fr' ? 'Publier la demande' : 'Post the request'}</button>
+            </div>
+          </div>
+          <p class="showcase-phone-caption">${locale === 'fr' ? 'Créer une demande' : 'Create a request'}</p>
+        </div>
+
+        <div class="showcase-phone-wrap reveal reveal-delay-1">
+          <div class="hero-phone-mockup showcase-phone" role="img" aria-label="${locale === 'fr' ? 'Profil donneur SONGRE' : 'SONGRE donor profile'}">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <div class="phone-topbar">
+                <div style="width:26px;"></div>
+                <div class="phone-brand"><span>${locale === 'fr' ? 'Mon profil' : 'My profile'}</span></div>
+                <div class="phone-icon-btn">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                </div>
+              </div>
+              <div class="phone-avatar">O+</div>
+              <div class="phone-profile-name">${locale === 'fr' ? 'Donneur SONGRE' : 'SONGRE Donor'}</div>
+              <div class="phone-profile-sub">${locale === 'fr' ? 'Ouagadougou' : 'Ouagadougou'}</div>
+              <div class="phone-toggle-card">
+                <div>
+                  <div class="phone-toggle-title">${locale === 'fr' ? 'Disponible' : 'Available'}</div>
+                  <div class="phone-toggle-sub">${locale === 'fr' ? 'Visible pour les demandes compatibles' : 'Visible for compatible requests'}</div>
+                </div>
+                <div class="phone-switch"></div>
+              </div>
+              <div class="phone-info-row"><span>${locale === 'fr' ? 'Groupe sanguin' : 'Blood type'}</span><strong>O+</strong></div>
+              <div class="phone-info-row"><span>${locale === 'fr' ? 'Dernier don' : 'Last donation'}</span><strong>12 mai 2026</strong></div>
+            </div>
+          </div>
+          <p class="showcase-phone-caption">${locale === 'fr' ? 'Mon profil' : 'My profile'}</p>
+        </div>
+
       </div>
     </div>
   </section>
