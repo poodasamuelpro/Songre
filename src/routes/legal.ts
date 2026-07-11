@@ -246,7 +246,7 @@ export function privacyPage(locale: TranslationKey, path: string, baseUrl: strin
   </ul>
 
   <h2>9. Cookies</h2>
-  <p>L'application SONGRE utilise uniquement des cookies techniques essentiels au fonctionnement du service (session, préférences de langue). Aucun cookie publicitaire ou de tracking tiers n'est utilisé.</p>
+  <p>Le site web SONGRE utilise uniquement des cookies techniques essentiels au fonctionnement du service (session, préférences de langue). Aucun cookie publicitaire ou de tracking tiers n'est utilisé.</p>
 
   <h2>10. Modifications</h2>
   <p>Toute modification substantielle de cette politique sera notifiée aux utilisateurs via l'application 15 jours avant sa mise en vigueur.</p>
