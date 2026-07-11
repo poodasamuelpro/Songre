@@ -173,3 +173,4 @@ export function faqPage(locale: TranslationKey, path: string, baseUrl: string): 
   const head = generateHead(seo, baseUrl, jsonLd);
   return layout(locale, path, head, content);
 }
+ 
