@@ -52,7 +52,7 @@ export const translations = {
       feature3Title: 'Simplicité',
       feature3Desc: 'Une interface pensée pour être utilisée en quelques secondes, sans complexité inutile.',
       feature4Title: 'Conforme',
-      feature4Desc: 'Respect strict de la loi burkinabè n°010-2004/AN relative à la protection des données personnelles.',
+      feature4Desc: 'Respect strict de la loi burkinabè n°001-2021/AN relative à la protection des données à caractère personnel.',
       testimonialsTitle: 'Ils ont vécu SONGRE',
     },
     about: {
@@ -79,7 +79,7 @@ export const translations = {
       separationTitle: 'Séparation des Données',
       separationDesc: 'Vos données personnelles (nom, téléphone) et vos données médicales (groupe sanguin) sont stockées dans des bases de données distinctes, physiquement séparées. Aucun lien direct n\'est maintenu.',
       complianceTitle: 'Conformité Légale',
-      complianceDesc: 'SONGRE s\'engage à respecter la loi burkinabè n°010-2004/AN relative à la protection des données à caractère personnel.',
+      complianceDesc: 'SONGRE s\'engage à respecter la loi burkinabè n°001-2021/AN relative à la protection des données à caractère personnel.',
       schemaTitle: 'Notre Architecture de Sécurité',
       layer1: 'Couche 1 : Interface utilisateur, connexion sécurisée',
       layer2: 'Couche 2 : Passerelle applicative, filtrage des requêtes',
@@ -113,11 +113,11 @@ export const translations = {
     },
     cgu: {
       title: 'Conditions Générales d\'Utilisation',
-      lastUpdate: 'Dernière mise à jour : 11 juillet 2026',
+      lastUpdate: 'Dernière mise à jour : 1er janvier 2026',
     },
     privacy: {
       title: 'Politique de Confidentialité',
-      lastUpdate: 'Dernière mise à jour : 11 juillet 2026',
+      lastUpdate: 'Dernière mise à jour : 1er janvier 2026',
     },
   },
   en: {
@@ -170,7 +170,7 @@ export const translations = {
       feature3Title: 'Simplicity',
       feature3Desc: 'An interface designed to be used in seconds, without unnecessary complexity.',
       feature4Title: 'Compliant',
-      feature4Desc: 'Strict compliance with Burkinabè law n°010-2004/AN on personal data protection.',
+      feature4Desc: 'Strict compliance with Burkinabè law n°001-2021/AN on personal data protection.',
       testimonialsTitle: 'They experienced SONGRE',
     },
     about: {
@@ -187,7 +187,7 @@ export const translations = {
       problemTitle: 'The Problem',
       problemText: 'The WHO estimates that 30% of preventable deaths in Burkina Faso are related to blood shortage. Blood banks are often out of stock. Families panic to find emergency donors.',
       solutionTitle: 'The SONGRE Solution',
-      solutionText: 'A mobile app and web platform that create a network of volunteer donors, activatable in real-time via geolocated notifications, all within an anonymous and secure framework.',
+      solutionText: 'A mobile app and web platform that creates a network of volunteer donors, activatable in real-time via geolocated notifications, all within an anonymous and secure framework.',
     },
     security: {
       title: 'Anonymity and Security',
@@ -197,7 +197,7 @@ export const translations = {
       separationTitle: 'Data Separation',
       separationDesc: 'Your personal data (name, phone) and medical data (blood type) are stored in separate, physically distinct databases. No direct link is maintained.',
       complianceTitle: 'Legal Compliance',
-      complianceDesc: 'SONGRE is committed to complying with Burkina Faso law n°010-2004/AN on personal data protection.',
+      complianceDesc: 'SONGRE is committed to complying with Burkina Faso law n°001-2021/AN on personal data protection.',
       schemaTitle: 'Our Security Architecture',
       layer1: 'Layer 1: User interface, secure connection',
       layer2: 'Layer 2: Application gateway, request filtering',
@@ -231,11 +231,11 @@ export const translations = {
     },
     cgu: {
       title: 'Terms of Service',
-      lastUpdate: 'Last updated: July 11, 2026',
+      lastUpdate: 'Last updated: January 1, 2026',
     },
     privacy: {
       title: 'Privacy Policy',
-      lastUpdate: 'Last updated: July 11, 2026',
+      lastUpdate: 'Last updated: January 1, 2026',
     },
   },
 };
