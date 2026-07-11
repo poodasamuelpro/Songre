@@ -30,7 +30,7 @@ export function homePage(locale: TranslationKey, path: string, baseUrl: string):
       'https://twitter.com/songre_bf',
       'https://instagram.com/songre_bf',
     ],
-    foundingDate: '2023',
+    foundingDate: '2026',
     areaServed: { '@type': 'Country', name: 'Burkina Faso' },
   };
 
@@ -43,8 +43,8 @@ export function homePage(locale: TranslationKey, path: string, baseUrl: string):
       <div class="hero-content">
         <div class="hero-text">
           <div class="hero-badge reveal">
-            <span>🩸</span>
-            <span>${locale === 'fr' ? 'Plateforme officielle Burkina Faso' : 'Official Burkina Faso Platform'}</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px;"><path d="M12 2.7 17.7 8.4a8 8 0 1 1-11.4 0Z"/></svg>
+            <span>${locale === 'fr' ? 'Plateforme Burkina Faso' : 'Burkina Faso Platform'}</span>
           </div>
           <h1 class="hero-title reveal">
             ${tr.home.heroTitle}
@@ -53,8 +53,8 @@ export function homePage(locale: TranslationKey, path: string, baseUrl: string):
           <p class="hero-desc reveal reveal-delay-1">${tr.home.heroParagraph}</p>
           <div class="hero-actions reveal reveal-delay-2">
             <a href="#download" class="btn btn-primary btn-lg">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.7 9.05 7.37c1.57.07 2.65.83 3.57.9 1.36-.28 2.66-1.05 4.1-.95 1.72.14 3.04.82 3.87 2.1-3.56 2.12-2.72 7.02.73 8.46-.42 1.12-.98 2.22-1.27 2.4zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
-              ${tr.cta.downloadIos}
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5v-17c0-.6.34-1.15.87-1.42.53-.27 1.17-.2 1.63.18l11.14 8.5c.38.29.6.74.6 1.24s-.22.95-.6 1.24l-11.14 8.5c-.46.38-1.1.45-1.63.18-.53-.27-.87-.82-.87-1.42z"/></svg>
+              ${tr.cta.downloadAndroid}
             </a>
             <a href="${locale === 'fr' ? `/${locale}/a-propos` : `/${locale}/about`}" class="btn btn-outline btn-lg">
               ${tr.cta.learnMore} →
@@ -62,8 +62,8 @@ export function homePage(locale: TranslationKey, path: string, baseUrl: string):
           </div>
           <div class="hero-trust reveal reveal-delay-3">
             <div class="trust-item"><span class="trust-dot"></span> ${locale === 'fr' ? '100% Anonyme' : '100% Anonymous'}</div>
-            <div class="trust-item"><span class="trust-dot"></span> ${locale === 'fr' ? 'Gratuit pour toujours' : 'Forever free'}</div>
-            <div class="trust-item"><span class="trust-dot"></span> ${locale === 'fr' ? 'Sécurisé AES-256' : 'AES-256 Secured'}</div>
+            <div class="trust-item"><span class="trust-dot"></span> ${locale === 'fr' ? 'Sans publicité' : 'Ad-free'}</div>
+            <div class="trust-item"><span class="trust-dot"></span> ${locale === 'fr' ? 'Données chiffrées' : 'Encrypted data'}</div>
           </div>
         </div>
         <div class="hero-visual reveal-right">
@@ -89,10 +89,12 @@ export function homePage(locale: TranslationKey, path: string, baseUrl: string):
                 </div>
               </div>
               <div class="phone-alert">
-                <div class="alert-icon">🚨</div>
+                <div class="alert-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                </div>
                 <div class="alert-text">
                   <strong>${locale === 'fr' ? 'URGENCE PROCHE' : 'NEARBY EMERGENCY'}</strong>
-                  ${locale === 'fr' ? 'CHU Yalgado — A+ requis, 2,3 km' : 'CHU Yalgado — A+ needed, 2.3 km'}
+                  ${locale === 'fr' ? 'CHU Yalgado, A+ requis, 2,3 km' : 'CHU Yalgado, A+ needed, 2.3 km'}
                 </div>
               </div>
               <div class="phone-btn">${locale === 'fr' ? '✓ Je peux donner' : '✓ I can donate'}</div>
@@ -116,8 +118,8 @@ export function homePage(locale: TranslationKey, path: string, baseUrl: string):
           <span class="stat-label">${locale === 'fr' ? 'Anonyme' : 'Anonymous'}</span>
         </div>
         <div class="stat-item reveal reveal-delay-2">
-          <span class="stat-number">0</span>
-          <span class="stat-label">${locale === 'fr' ? 'Profit' : 'Profit'}</span>
+          <span class="stat-number">23</span>
+          <span class="stat-label">${tr.stats.cities}</span>
         </div>
         <div class="stat-item reveal reveal-delay-3">
           <span class="stat-number">24h</span>
@@ -131,7 +133,7 @@ export function homePage(locale: TranslationKey, path: string, baseUrl: string):
   <section class="section" id="how-it-works">
     <div class="container">
       <div class="section-header text-center">
-        <div class="section-badge reveal">✨ ${locale === 'fr' ? 'Simple comme bonjour' : 'Simple as can be'}</div>
+        <div class="section-badge reveal">${locale === 'fr' ? 'Simple comme bonjour' : 'Simple as can be'}</div>
         <h2 class="section-title reveal">${tr.home.howTitle}</h2>
         <p class="section-desc reveal">${locale === 'fr' ? 'En 3 étapes simples, devenez un héros anonyme qui sauve des vies.' : 'In 3 simple steps, become an anonymous hero who saves lives.'}</p>
       </div>
@@ -188,7 +190,7 @@ export function homePage(locale: TranslationKey, path: string, baseUrl: string):
         </div>
         <div class="feature-card reveal reveal-delay-2">
           <div class="feature-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
           </div>
           <h3 class="feature-title">${tr.home.feature3Title}</h3>
           <p class="feature-desc">${tr.home.feature3Desc}</p>
@@ -274,19 +276,19 @@ export function homePage(locale: TranslationKey, path: string, baseUrl: string):
   <!-- ── IMPACT ─────────────────────────────────────────────── -->
   <section class="section" style="background:var(--bg);" id="impact">
     <div class="container">
-      <div class="grid" style="grid-template-columns:1fr 1fr; gap:4rem; align-items:center;">
+      <div class="grid grid-2" style="gap:4rem; align-items:center;">
         <div class="reveal-left">
           <div class="section-badge mb-3">${locale === 'fr' ? 'Notre Engagement' : 'Our Commitment'}</div>
           <h2 style="margin-bottom:1.5rem;">${locale === 'fr' ? 'Pourquoi SONGRE compte' : 'Why SONGRE matters'}</h2>
-          <p style="color:var(--text-muted); margin-bottom:2rem;">${locale === 'fr' ? 'Au Burkina Faso, la pénurie de sang est une réalité quotidienne. SONGRE est une réponse concrète, gratuite et sécurisée.' : 'In Burkina Faso, blood shortage is a daily reality. SONGRE is a concrete, free and secure response.'}</p>
-          <div class="grid" style="grid-template-columns:1fr 1fr; gap:1.5rem;">
+          <p style="color:var(--text-muted); margin-bottom:2rem;">${locale === 'fr' ? 'Au Burkina Faso, la pénurie de sang est une réalité quotidienne. SONGRE est une réponse concrète et sécurisée.' : 'In Burkina Faso, blood shortage is a daily reality. SONGRE is a concrete and secure response.'}</p>
+          <div class="grid grid-2" style="gap:1.5rem;">
             ${[
               { label: locale === 'fr' ? 'Groupes sanguins' : 'Blood types', value: '8',
                 svgIcon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg>' },
               { label: locale === 'fr' ? 'Anonymat garanti' : 'Guaranteed privacy', value: '100%',
                 svgIcon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>' },
-              { label: locale === 'fr' ? 'Gratuit' : 'Free forever', value: locale === 'fr' ? 'Toujours' : 'Always',
-                svgIcon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>' },
+              { label: locale === 'fr' ? 'Alerte envoyée' : 'Alert sent', value: '<30s',
+                svgIcon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>' },
               { label: locale === 'fr' ? 'Disponibilité' : 'Availability', value: '24/7',
                 svgIcon: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>' },
             ].map(stat => `
@@ -303,17 +305,22 @@ export function homePage(locale: TranslationKey, path: string, baseUrl: string):
             <div class="impact-circle"></div>
             <div class="impact-circle"></div>
             <div class="impact-data-card">
-              <div class="data-card-title">${locale === 'fr' ? 'Application en développement' : 'App in development'}</div>
+              <div class="data-card-title">${locale === 'fr' ? 'Ce qui vous protège' : 'What protects you'}</div>
               <div class="data-card-row">
-                <span>${locale === 'fr' ? 'Statut' : 'Status'}</span>
-                <span class="text-primary">${locale === 'fr' ? 'En cours' : 'Active'}</span>
+                <span>${locale === 'fr' ? 'Anonymat' : 'Anonymity'}</span>
+                <span class="text-primary">✓</span>
+              </div>
+              <div class="data-card-row">
+                <span>${locale === 'fr' ? 'Données chiffrées' : 'Encrypted data'}</span>
+                <span class="text-primary">✓</span>
+              </div>
+              <div class="data-card-row">
+                <span>${locale === 'fr' ? 'Sans publicité' : 'Ad-free'}</span>
+                <span class="text-primary">✓</span>
               </div>
               <div class="data-card-row">
                 <span>${locale === 'fr' ? 'Groupes sanguins' : 'Blood types'}</span>
                 <span class="text-primary">A, B, AB, O</span>
-              </div>
-              <div class="data-card-progress">
-                <div class="progress-bar" style="width: 65%;"></div>
               </div>
             </div>
           </div>
