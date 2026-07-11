@@ -69,7 +69,7 @@ export const translations = {
       problemTitle: 'Le Problème',
       problemText: 'L\'OMS estime que 30% des décès évitables au Burkina Faso sont liés à un manque de sang. Les banques de sang sont souvent à court de stocks. Les familles paniquent pour trouver des donneurs en urgence.',
       solutionTitle: 'La Solution SONGRE',
-      solutionText: 'Une application mobile qui crée un réseau de donneurs volontaires, activable en temps réel via des notifications géolocalisées, le tout dans un cadre anonyme et sécurisé.',
+      solutionText: 'Une application mobile et une plateforme web qui créent un réseau de donneurs volontaires, activables en temps réel via des notifications géolocalisées, le tout dans un cadre anonyme et sécurisé.',
     },
     security: {
       title: 'Anonymat et Sécurité',
@@ -187,7 +187,7 @@ export const translations = {
       problemTitle: 'The Problem',
       problemText: 'The WHO estimates that 30% of preventable deaths in Burkina Faso are related to blood shortage. Blood banks are often out of stock. Families panic to find emergency donors.',
       solutionTitle: 'The SONGRE Solution',
-      solutionText: 'A mobile app that creates a network of volunteer donors, activatable in real-time via geolocated notifications, all within an anonymous and secure framework.',
+      solutionText: 'A mobile app and web platform that create a network of volunteer donors, activatable in real-time via geolocated notifications, all within an anonymous and secure framework.',
     },
     security: {
       title: 'Anonymity and Security',
