@@ -51,7 +51,7 @@ function faqData(locale: TranslationKey) {
     },
     {
       cat: 'safety',
-      label: `${icon('shield')}Sécurité & Confidentialité`,
+      label: `${icon('shield')}Sécurité et Confidentialité`,
       items: [
         { q: 'Mes données personnelles sont-elles vendues ?', a: 'Absolument non. SONGRE ne vend, ne loue et ne partage jamais vos données personnelles avec des tiers ; nous n\'avons aucun modèle économique fondé sur l\'exploitation de vos données.' },
         { q: 'Comment puis-je supprimer mon compte ?', a: 'Vous pouvez supprimer votre compte à tout moment depuis les paramètres de l\'application. La suppression est irréversible et entraîne l\'effacement complet de toutes vos données dans un délai de 30 jours conformément à la loi burkinabè.' },
@@ -98,7 +98,7 @@ function faqData(locale: TranslationKey) {
     },
     {
       cat: 'safety',
-      label: `${icon('shield')}Security & Privacy`,
+      label: `${icon('shield')}Security and Privacy`,
       items: [
         { q: 'Is my personal data sold?', a: 'Absolutely not. SONGRE never sells, rents or shares your personal data with third parties ; we have no business model based on exploiting your data.' },
         { q: 'How can I delete my account?', a: 'You can delete your account at any time from the app settings. Deletion is irreversible and results in the complete erasure of all your data within 30 days in accordance with Burkinabè law.' },
