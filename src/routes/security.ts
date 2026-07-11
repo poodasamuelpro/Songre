@@ -45,11 +45,11 @@ export function securityPage(locale: TranslationKey, path: string, baseUrl: stri
           <div style="margin-top:1.5rem;">
             <div style="display:flex; flex-direction:column; gap:0.75rem;">
               <div style="padding:0.75rem; background:var(--primary-ultra-light); border-radius:var(--radius-sm); font-size:0.85rem; border-left:3px solid var(--primary);">
-                <strong>${locale === 'fr' ? 'Base A' : 'Database A'}</strong> — ${locale === 'fr' ? 'Données d\'identité (chiffrées)' : 'Identity data (encrypted)'}
+                <strong>${locale === 'fr' ? 'Base A' : 'Database A'}</strong> : ${locale === 'fr' ? 'données d\'identité (chiffrées)' : 'identity data (encrypted)'}
               </div>
               <div style="text-align:center; font-size:1.25rem; color:var(--text-muted);">⬍</div>
               <div style="padding:0.75rem; background:var(--success-light); border-radius:var(--radius-sm); font-size:0.85rem; border-left:3px solid var(--success);">
-                <strong>${locale === 'fr' ? 'Base B' : 'Database B'}</strong> — ${locale === 'fr' ? 'Données médicales (anonymes)' : 'Medical data (anonymous)'}
+                <strong>${locale === 'fr' ? 'Base B' : 'Database B'}</strong> : ${locale === 'fr' ? 'données médicales (anonymes)' : 'medical data (anonymous)'}
               </div>
               <div style="padding:0.75rem; background:var(--bg); border-radius:var(--radius-sm); font-size:0.85rem; text-align:center; color:var(--text-muted);">
                 ↕ ${locale === 'fr' ? 'Aucun lien direct maintenu' : 'No direct link maintained'}
@@ -64,10 +64,8 @@ export function securityPage(locale: TranslationKey, path: string, baseUrl: stri
           <h2 class="security-title">${tr.security.complianceTitle}</h2>
           <p class="security-desc">${tr.security.complianceDesc}</p>
           <div style="margin-top:1.5rem; display:flex; flex-wrap:wrap; gap:0.5rem;">
-            <span class="cert-badge">✓ Loi 010-2004/AN</span>
-            <span class="cert-badge">✓ ANPDP</span>
-            <span class="cert-badge">✓ ISO 27001</span>
-            <span class="cert-badge">✓ TLS 1.3</span>
+            <span class="cert-badge">${locale === 'fr' ? 'Loi n°010-2004/AN' : 'Law n°010-2004/AN'}</span>
+            <span class="cert-badge">${locale === 'fr' ? 'Anonymat par conception' : 'Anonymity by design'}</span>
           </div>
         </div>
       </div>
@@ -86,10 +84,10 @@ export function securityPage(locale: TranslationKey, path: string, baseUrl: stri
         <div class="schema-title">${locale === 'fr' ? 'Séparation des données' : 'Data Separation'}</div>
         <div class="schema-layers">
           ${[
-            { num: '1', name: locale === 'fr' ? 'Interface — Connexion HTTPS sécurisée' : 'Interface — Secure HTTPS connection', detail: locale === 'fr' ? 'Toutes les communications entre l\'app et nos serveurs sont chiffrées.' : 'All communications between the app and our servers are encrypted.' },
-            { num: '2', name: locale === 'fr' ? 'Contrôle d\'accès — Protection contre les abus' : 'Access control — Abuse protection', detail: locale === 'fr' ? 'Les requêtes sont filtrées pour prévenir toute utilisation abusive.' : 'Requests are filtered to prevent any abusive use.' },
-            { num: '3', name: locale === 'fr' ? 'Séparation des identités — Cloisonnement strict' : 'Identity separation — Strict isolation', detail: locale === 'fr' ? 'Vos données d\'identité et vos données médicales ne sont jamais dans la même base.' : 'Your identity data and medical data are never in the same database.' },
-            { num: '4', name: locale === 'fr' ? 'Stockage chiffré — Données illisibles sans clé' : 'Encrypted storage — Data unreadable without key', detail: locale === 'fr' ? 'Même en accès direct à la base de données, les données sont illisibles.' : 'Even with direct database access, the data is unreadable.' },
+            { num: '1', name: locale === 'fr' ? 'Interface : connexion sécurisée' : 'Interface: secure connection', detail: locale === 'fr' ? 'Toutes les communications entre l\'application et nos serveurs sont chiffrées.' : 'All communications between the app and our servers are encrypted.' },
+            { num: '2', name: locale === 'fr' ? 'Contrôle d\'accès : protection contre les abus' : 'Access control: abuse protection', detail: locale === 'fr' ? 'Les requêtes sont filtrées pour prévenir toute utilisation abusive.' : 'Requests are filtered to prevent any abusive use.' },
+            { num: '3', name: locale === 'fr' ? 'Séparation des identités : cloisonnement strict' : 'Identity separation: strict isolation', detail: locale === 'fr' ? 'Vos données d\'identité et vos données médicales ne sont jamais dans la même base.' : 'Your identity data and medical data are never in the same database.' },
+            { num: '4', name: locale === 'fr' ? 'Stockage chiffré : données illisibles sans autorisation' : 'Encrypted storage: data unreadable without authorization', detail: locale === 'fr' ? 'Même en accès direct à la base de données, les données restent protégées.' : 'Even with direct database access, the data remains protected.' },
           ].map(layer => `
             <div class="schema-layer">
               <div class="layer-num">${layer.num}</div>
@@ -148,21 +146,20 @@ export function securityPage(locale: TranslationKey, path: string, baseUrl: stri
     </div>
   </section>
 
-  <!-- ── CERTIFICATIONS ────────────────────────────────────── -->
+  <!-- ── ENGAGEMENTS ────────────────────────────────────────── -->
   <section class="section" style="background:var(--bg);">
     <div class="container text-center">
-      <div class="section-badge reveal mb-4">${locale === 'fr' ? 'Certifications &amp; Conformités' : 'Certifications &amp; Compliances'}</div>
+      <div class="section-badge reveal mb-4">${locale === 'fr' ? 'Nos Engagements' : 'Our Commitments'}</div>
       <h2 class="section-title reveal" style="margin-bottom:3rem;">${tr.security.certifications}</h2>
       <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:1.5rem;">
         ${[
-          { badge: '✓', label: 'Loi 010-2004/AN', sub: locale === 'fr' ? 'Protection données Burkina' : 'Burkina data protection' },
-          { badge: '✓', label: 'AES-256', sub: locale === 'fr' ? 'Chiffrement fort' : 'Strong encryption' },
-          { badge: '✓', label: 'TLS', sub: locale === 'fr' ? 'Transport sécurisé' : 'Secure transport' },
-          { badge: '✓', label: 'ANPDP', sub: locale === 'fr' ? 'Autorité nationale' : 'National authority' },
-          { badge: '✓', label: locale === 'fr' ? 'Zéro pub' : 'Zero ads', sub: locale === 'fr' ? 'Aucun profilage commercial' : 'No commercial profiling' },
+          { label: locale === 'fr' ? 'Zéro publicité' : 'Zero ads', sub: locale === 'fr' ? 'Aucun profilage commercial' : 'No commercial profiling' },
+          { label: locale === 'fr' ? 'Aucune revente de données' : 'No data resale', sub: locale === 'fr' ? 'Vos données ne sont jamais monétisées' : 'Your data is never monetized' },
+          { label: locale === 'fr' ? 'Anonymat par conception' : 'Anonymity by design', sub: locale === 'fr' ? 'Séparation stricte des données' : 'Strict data separation' },
+          { label: locale === 'fr' ? 'Respect de la loi 010-2004/AN' : 'Compliance with law 010-2004/AN', sub: locale === 'fr' ? 'Protection des données personnelles' : 'Personal data protection' },
+          { label: locale === 'fr' ? 'Transparence totale' : 'Full transparency', sub: locale === 'fr' ? 'Vous savez ce qui est collecté' : 'You know what is collected' },
         ].map((c, i) => `
-          <div class="reveal ${i > 0 ? 'reveal-delay-' + (i % 4) : ''}" style="background:white; border-radius:var(--radius-lg); padding:2rem 1.5rem; min-width:160px; text-align:center; box-shadow:var(--shadow-sm); border:1px solid var(--border);">
-            <div style="font-size:1.5rem; font-weight:800; color:var(--success); margin-bottom:0.75rem;">${c.badge}</div>
+          <div class="reveal ${i > 0 ? 'reveal-delay-' + (i % 4) : ''}" style="background:white; border-radius:var(--radius-lg); padding:2rem 1.5rem; min-width:180px; text-align:center; box-shadow:var(--shadow-sm); border:1px solid var(--border);">
             <div style="font-weight:700; margin-bottom:0.25rem;">${c.label}</div>
             <div style="font-size:0.8rem; color:var(--text-muted);">${c.sub}</div>
           </div>
