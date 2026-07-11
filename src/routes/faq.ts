@@ -3,11 +3,22 @@ import { t } from '../utils/translations';
 import { getSeoData, generateHead } from '../utils/seo';
 import { layout } from '../utils/components';
 
+function icon(name: string, size = 18): string {
+  const paths: Record<string, string> = {
+    droplet: '<path d="M12 2.7 17.7 8.4a8 8 0 1 1-11.4 0Z"/>',
+    hospital: '<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 21v-4a3 3 0 0 1 6 0v4"/><path d="M9 9h6M12 6v6"/>',
+    settings: '<circle cx="12" cy="12" r="3"/><path d="M12 4.5v2M12 17.5v2M19.5 12h-2M6.5 12h-2M17.3 6.7l-1.4 1.4M8.1 15.9l-1.4 1.4M17.3 17.3l-1.4-1.4M8.1 8.1 6.7 6.7"/>',
+    shield: '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/>',
+    mail: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/>',
+  };
+  return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-4px;margin-right:6px;flex-shrink:0;" aria-hidden="true">${paths[name] || ''}</svg>`;
+}
+
 function faqData(locale: TranslationKey) {
   const fr = [
     {
       cat: 'donors',
-      label: '💉 Pour les Donneurs',
+      label: `${icon('droplet')}Pour les Donneurs`,
       items: [
         { q: 'Qui peut donner du sang ?', a: 'Toute personne âgée de 18 à 60 ans, pesant au moins 50 kg et en bonne santé peut donner du sang. Certaines conditions médicales peuvent temporairement ou définitivement empêcher le don. Consultez un professionnel de santé en cas de doute.' },
         { q: 'À quelle fréquence puis-je donner ?', a: 'Les hommes peuvent donner tous les 3 mois (jusqu\'à 4 fois par an), les femmes tous les 4 mois (jusqu\'à 3 fois par an). Ces délais permettent à votre organisme de reconstituer ses réserves en globules rouges.' },
@@ -18,7 +29,7 @@ function faqData(locale: TranslationKey) {
     },
     {
       cat: 'recipients',
-      label: '🏥 Pour les Demandeurs',
+      label: `${icon('hospital')}Pour les Demandeurs`,
       items: [
         { q: 'Comment faire une demande de sang ?', a: 'Depuis l\'application SONGRE, vous pouvez faire une demande de sang en indiquant le groupe sanguin recherché, votre ville, la structure sanitaire concernée ainsi que l\'adresse. Un contact est également demandé, mais il ne sera visible que par les donneurs ayant accepté de répondre à votre demande. SONGRE vous met ensuite en relation avec des donneurs compatibles, selon leur disponibilité, leur groupe sanguin et leur ville.' },
         { q: 'Quel est le délai moyen pour trouver un donneur ?', a: 'La recherche et la notification des donneurs compatibles se font en général assez rapidement. Le délai pour qu\'un donneur accepte et se rende disponible peut en revanche varier, de quelques minutes à plusieurs heures, selon la disponibilité de chacun. Nous recommandons de contacter aussi le centre de transfusion local en parallèle.' },
@@ -29,7 +40,7 @@ function faqData(locale: TranslationKey) {
     },
     {
       cat: 'technical',
-      label: '⚙️ Questions Techniques',
+      label: `${icon('settings')}Questions Techniques`,
       items: [
         { q: 'L\'application fonctionne-t-elle sans internet ?', a: 'L\'application nécessite une connexion internet pour envoyer et recevoir des alertes. Cependant, vos informations de profil et l\'historique de vos dons sont disponibles hors ligne.' },
         { q: 'Sur quels appareils puis-je utiliser SONGRE ?', a: 'SONGRE est disponible sur iOS (iPhone 7 et versions ultérieures, iOS 14+) et Android (version 8.0 et supérieure). Un site web responsive est également disponible pour tous les navigateurs modernes.' },
@@ -40,7 +51,7 @@ function faqData(locale: TranslationKey) {
     },
     {
       cat: 'safety',
-      label: '🔒 Sécurité & Confidentialité',
+      label: `${icon('shield')}Sécurité & Confidentialité`,
       items: [
         { q: 'Mes données personnelles sont-elles vendues ?', a: 'Absolument non. SONGRE ne vend, ne loue et ne partage jamais vos données personnelles avec des tiers ; nous n\'avons aucun modèle économique fondé sur l\'exploitation de vos données.' },
         { q: 'Comment puis-je supprimer mon compte ?', a: 'Vous pouvez supprimer votre compte à tout moment depuis les paramètres de l\'application. La suppression est irréversible et entraîne l\'effacement complet de toutes vos données dans un délai de 30 jours conformément à la loi burkinabè.' },
@@ -54,7 +65,7 @@ function faqData(locale: TranslationKey) {
   const en = [
     {
       cat: 'donors',
-      label: '💉 For Donors',
+      label: `${icon('droplet')}For Donors`,
       items: [
         { q: 'Who can donate blood?', a: 'Anyone aged 18 to 60, weighing at least 50 kg and in good health can donate blood. Certain medical conditions may temporarily or permanently prevent donation. Consult a healthcare professional if in doubt.' },
         { q: 'How often can I donate?', a: 'Men can donate every 3 months (up to 4 times a year), women every 4 months (up to 3 times a year). These delays allow your body to replenish its red blood cell reserves.' },
@@ -65,7 +76,7 @@ function faqData(locale: TranslationKey) {
     },
     {
       cat: 'recipients',
-      label: '🏥 For Recipients',
+      label: `${icon('hospital')}For Recipients`,
       items: [
         { q: 'How do I request blood?', a: 'From the SONGRE app, you can request blood by indicating the blood type needed, your city, the health facility involved and the address. A contact is also requested, but it will only be visible to donors who have agreed to respond to your request. SONGRE then connects you with compatible donors, based on their availability, blood type and city.' },
         { q: 'What is the average time to find a donor?', a: 'Searching for and notifying compatible donors is generally quite fast. The time it takes for a donor to accept and become available can vary, however, from a few minutes to several hours, depending on individual availability. We recommend also contacting the local transfusion center in parallel.' },
@@ -76,7 +87,7 @@ function faqData(locale: TranslationKey) {
     },
     {
       cat: 'technical',
-      label: '⚙️ Technical Questions',
+      label: `${icon('settings')}Technical Questions`,
       items: [
         { q: 'Does the app work without internet?', a: 'The app requires an internet connection to send and receive alerts. However, your profile information and donation history are available offline.' },
         { q: 'On what devices can I use SONGRE?', a: 'SONGRE is available on iOS (iPhone 7 and later, iOS 14+) and Android (version 8.0 and above). A responsive website is also available for all modern browsers.' },
@@ -87,7 +98,7 @@ function faqData(locale: TranslationKey) {
     },
     {
       cat: 'safety',
-      label: '🔒 Security & Privacy',
+      label: `${icon('shield')}Security & Privacy`,
       items: [
         { q: 'Is my personal data sold?', a: 'Absolutely not. SONGRE never sells, rents or shares your personal data with third parties ; we have no business model based on exploiting your data.' },
         { q: 'How can I delete my account?', a: 'You can delete your account at any time from the app settings. Deletion is irreversible and results in the complete erasure of all your data within 30 days in accordance with Burkinabè law.' },
@@ -126,7 +137,7 @@ export function faqPage(locale: TranslationKey, path: string, baseUrl: string): 
         <span class="breadcrumb-sep">›</span>
         <span>FAQ</span>
       </nav>
-      <div class="page-hero-badge reveal">❓ ${locale === 'fr' ? 'Questions Fréquentes' : 'Frequent Questions'}</div>
+      <div class="page-hero-badge reveal">${locale === 'fr' ? 'Questions Fréquentes' : 'Frequent Questions'}</div>
       <h1 class="page-hero-title reveal">${tr.faq.title}</h1>
       <p class="page-hero-desc reveal">${tr.faq.subtitle}</p>
     </div>
@@ -137,7 +148,7 @@ export function faqPage(locale: TranslationKey, path: string, baseUrl: string): 
     <div class="container">
       <!-- Categories Filter -->
       <div class="faq-categories" role="tablist" aria-label="${locale === 'fr' ? 'Filtrer les questions' : 'Filter questions'}">
-        <button class="faq-cat-btn active" data-cat="all" role="tab" aria-selected="true">${locale === 'fr' ? '📋 Toutes' : '📋 All'}</button>
+        <button class="faq-cat-btn active" data-cat="all" role="tab" aria-selected="true">${locale === 'fr' ? 'Toutes' : 'All'}</button>
         ${faqs.map(g => `<button class="faq-cat-btn" data-cat="${g.cat}" role="tab" aria-selected="false">${g.label}</button>`).join('')}
       </div>
 
@@ -165,7 +176,7 @@ export function faqPage(locale: TranslationKey, path: string, baseUrl: string): 
       <div style="text-align:center; margin-top:4rem; padding:3rem; background:var(--primary-ultra-light); border-radius:var(--radius-lg); border:1px solid rgba(200,30,58,0.1);" class="reveal">
         <h3 style="margin-bottom:1rem;">${locale === 'fr' ? 'Vous ne trouvez pas votre réponse ?' : 'Can\'t find your answer?'}</h3>
         <p style="color:var(--text-muted); margin-bottom:2rem;">${locale === 'fr' ? 'Notre équipe est disponible 7j/7 pour répondre à toutes vos questions.' : 'Our team is available 7 days a week to answer all your questions.'}</p>
-        <a href="/${locale}/contact" class="btn btn-primary">${locale === 'fr' ? '✉️ Nous contacter' : '✉️ Contact us'}</a>
+        <a href="/${locale}/contact" class="btn btn-primary">${icon('mail')}${locale === 'fr' ? 'Nous contacter' : 'Contact us'}</a>
       </div>
     </div>
   </section>`;
@@ -173,4 +184,3 @@ export function faqPage(locale: TranslationKey, path: string, baseUrl: string): 
   const head = generateHead(seo, baseUrl, jsonLd);
   return layout(locale, path, head, content);
 }
- 
