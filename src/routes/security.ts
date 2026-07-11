@@ -14,9 +14,9 @@ export function securityPage(locale: TranslationKey, path: string, baseUrl: stri
       <nav class="breadcrumb" style="justify-content:center;" aria-label="Breadcrumb">
         <a href="/${locale}">${locale === 'fr' ? 'Accueil' : 'Home'}</a>
         <span class="breadcrumb-sep">›</span>
-        <span>${locale === 'fr' ? 'Anonymat & Sécurité' : 'Anonymity & Security'}</span>
+        <span>${locale === 'fr' ? 'Anonymat et Sécurité' : 'Anonymity and Security'}</span>
       </nav>
-      <div class="page-hero-badge reveal">${locale === 'fr' ? 'Anonymat &amp; Sécurité' : 'Anonymity &amp; Security'}</div>
+      <div class="page-hero-badge reveal">${locale === 'fr' ? 'Anonymat et Sécurité' : 'Anonymity and Security'}</div>
       <h1 class="page-hero-title reveal">${tr.security.title}</h1>
       <p class="page-hero-desc reveal">${tr.security.subtitle}</p>
     </div>
@@ -42,18 +42,12 @@ export function securityPage(locale: TranslationKey, path: string, baseUrl: stri
           </div>
           <h2 class="security-title">${tr.security.separationTitle}</h2>
           <p class="security-desc">${tr.security.separationDesc}</p>
-          <div style="margin-top:1.5rem;">
-            <div style="display:flex; flex-direction:column; gap:0.75rem;">
-              <div style="padding:0.75rem; background:var(--primary-ultra-light); border-radius:var(--radius-sm); font-size:0.85rem; border-left:3px solid var(--primary);">
-                <strong>${locale === 'fr' ? 'Base A' : 'Database A'}</strong> : ${locale === 'fr' ? 'données d\'identité (chiffrées)' : 'identity data (encrypted)'}
-              </div>
-              <div style="text-align:center; font-size:1.25rem; color:var(--text-muted);">⬍</div>
-              <div style="padding:0.75rem; background:var(--success-light); border-radius:var(--radius-sm); font-size:0.85rem; border-left:3px solid var(--success);">
-                <strong>${locale === 'fr' ? 'Base B' : 'Database B'}</strong> : ${locale === 'fr' ? 'données médicales (anonymes)' : 'medical data (anonymous)'}
-              </div>
-              <div style="padding:0.75rem; background:var(--bg); border-radius:var(--radius-sm); font-size:0.85rem; text-align:center; color:var(--text-muted);">
-                ↕ ${locale === 'fr' ? 'Aucun lien direct maintenu' : 'No direct link maintained'}
-              </div>
+          <div style="margin-top:1.5rem; display:flex; flex-direction:column; gap:0.75rem;">
+            <div style="padding:0.85rem 1rem; background:var(--bg); border-radius:var(--radius-sm); font-size:0.85rem; color:var(--text-muted); border-left:3px solid var(--primary);">
+              ${locale === 'fr' ? 'Votre identité et vos données médicales ne sont jamais reliées entre elles dans nos systèmes.' : 'Your identity and your medical data are never linked together in our systems.'}
+            </div>
+            <div style="padding:0.85rem 1rem; background:var(--bg); border-radius:var(--radius-sm); font-size:0.85rem; color:var(--text-muted); border-left:3px solid var(--success);">
+              ${locale === 'fr' ? 'Personne ne peut reconstituer qui a donné à qui à partir de nos données.' : 'No one can reconstruct who donated to whom from our data.'}
             </div>
           </div>
         </div>
