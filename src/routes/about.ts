@@ -16,7 +16,7 @@ export function aboutPage(locale: TranslationKey, path: string, baseUrl: string)
     mainEntity: {
       '@type': 'Organization',
       name: 'SONGRE',
-      foundingDate: '2023',
+      foundingDate: '2025',
       mission: locale === 'fr' ? 'Révolutionner le don de sang au Burkina Faso' : 'Revolutionize blood donation in Burkina Faso',
     },
   };
@@ -42,15 +42,15 @@ export function aboutPage(locale: TranslationKey, path: string, baseUrl: string)
   <!-- ── STORY ─────────────────────────────────────────────── -->
   <section class="section about-section">
     <div class="container">
-      <div class="grid" style="grid-template-columns:1fr 1fr; gap:4rem; align-items:center;">
+      <div class="grid grid-2" style="gap:4rem; align-items:center;">
         <div class="reveal-left">
           <div class="section-badge mb-3">${locale === 'fr' ? 'Notre Histoire' : 'Our Story'}</div>
           <h2 style="margin-bottom:1.5rem;">${locale === 'fr' ? 'Comment SONGRE est né' : 'How SONGRE was born'}</h2>
           <p style="color:var(--text-muted); margin-bottom:1.25rem; line-height:1.8;">${tr.about.story}</p>
           <p style="color:var(--text-muted); margin-bottom:1.25rem; line-height:1.8;">
             ${locale === 'fr' 
-              ? 'En 2023, une équipe de développeurs burkinabè décide de créer SONGRE — terme mooré signifiant "sang" — pour donner à chaque citoyen le pouvoir de sauver une vie depuis son smartphone.'
-              : 'In 2023, a team of Burkinabè developers decided to create SONGRE — a Mooré word meaning "blood" — to empower every citizen to save a life from their smartphone.'}
+              ? 'En 2025, SONGRE voit le jour, un mot mooré qui signifie "aider", pensé pour donner à chaque citoyen le pouvoir de sauver une vie depuis son smartphone.'
+              : 'In 2025, SONGRE was created, a Mooré word meaning "help", designed to empower every citizen to save a life from their smartphone.'}
           </p>
           <p style="color:var(--text-muted); line-height:1.8;">${tr.about.mission}</p>
         </div>
@@ -58,7 +58,7 @@ export function aboutPage(locale: TranslationKey, path: string, baseUrl: string)
           <div style="background:var(--primary-ultra-light); border-radius:var(--radius-lg); padding:3rem; text-align:center; border:1px solid rgba(200,30,58,0.1);">
             <img src="/logo-songre.png" alt="SONGRE" width="140" height="140" style="border-radius:20px; margin-bottom:1.5rem; box-shadow:var(--shadow-lg);">
             <h3 style="color:var(--primary); margin-bottom:0.5rem; font-size:2rem;">SONGRE</h3>
-            <p style="color:var(--text-muted); font-style:italic;">${locale === 'fr' ? '"Sang" en langue Mooré' : '"Blood" in Mooré language'}</p>
+            <p style="color:var(--text-muted); font-style:italic;">${locale === 'fr' ? '"Aider" en langue Mooré' : '"Help" in Mooré language'}</p>
             <div style="margin-top:2rem; padding-top:2rem; border-top:1px solid rgba(200,30,58,0.15);">
               <p style="color:var(--text-muted); font-size:0.9rem;">
                 ${locale === 'fr' ? '🇧🇫 Projet 2026 · Ouagadougou' : '🇧🇫 Project 2026 · Ouagadougou'}
@@ -92,9 +92,9 @@ export function aboutPage(locale: TranslationKey, path: string, baseUrl: string)
           <h3>${tr.about.solutionTitle}</h3>
           <p style="margin-top:1rem; line-height:1.8; color:var(--text-muted);">${tr.about.solutionText}</p>
           <ul style="margin-top:1rem; padding-left:1.5rem; color:var(--text-muted); line-height:2;">
-            <li>${locale === 'fr' ? 'Réseau de donneurs géolocalisés' : 'Geolocated donor network'}</li>
+            <li>${locale === 'fr' ? 'Réseau de donneurs actifs par ville' : 'Network of active donors by city'}</li>
             <li>${locale === 'fr' ? 'Alertes en temps réel <30s' : 'Real-time alerts <30s'}</li>
-            <li>${locale === 'fr' ? 'Anonymat garanti (AES-256)' : 'Guaranteed anonymity (AES-256)'}</li>
+            <li>${locale === 'fr' ? 'Anonymat garanti' : 'Guaranteed anonymity'}</li>
             <li>${locale === 'fr' ? 'Gratuit et sans publicité' : 'Free and ad-free'}</li>
           </ul>
         </div>
@@ -113,8 +113,8 @@ export function aboutPage(locale: TranslationKey, path: string, baseUrl: string)
         ${[
           { icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>', title: tr.about.value1, desc: locale === 'fr' ? 'Chaque être humain mérite d\'accéder au sang dont il a besoin, sans barrière financière ni géographique.' : 'Every human being deserves access to the blood they need, without financial or geographic barriers.' },
           { icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>', title: tr.about.value2, desc: locale === 'fr' ? 'Votre identité est sacrée. SONGRE a été conçu de zéro avec l\'anonymat comme pilier fondamental.' : 'Your identity is sacred. SONGRE was built from scratch with anonymity as a fundamental pillar.' },
-          { icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>', title: tr.about.value3, desc: locale === 'fr' ? 'Nous ne faisons aucune concession sur la qualité du code, de l\'expérience utilisateur et de la sécurité.' : 'We make no concessions on code quality, user experience and security.' },
-          { icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>', title: tr.about.value4, desc: locale === 'fr' ? 'SONGRE est un projet communautaire. Les donneurs, les receveurs et l\'équipe forment une seule famille.' : 'SONGRE is a community project. Donors, recipients and the team form one family.' },
+          { icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>', title: tr.about.value3, desc: locale === 'fr' ? 'Nous ne faisons aucune concession sur la qualité de service, de l\'expérience utilisateur et de la sécurité.' : 'We make no concessions on quality of service, user experience and security.' },
+          { icon: '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>', title: tr.about.value4, desc: locale === 'fr' ? 'SONGRE repose sur l\'entraide. Donneurs et receveurs forment une seule et même communauté.' : 'SONGRE is built on mutual support. Donors and recipients form one community.' },
         ].map((v, i) => `
           <div class="value-card reveal ${i > 0 ? 'reveal-delay-' + i : ''}">
             <span class="value-icon">${v.icon}</span>
@@ -138,9 +138,6 @@ export function aboutPage(locale: TranslationKey, path: string, baseUrl: string)
         <p class="section-desc reveal">${locale === 'fr' ? 'SONGRE est un projet indépendant, né d\'une vision simple : connecter les donneurs de sang aux patients de façon anonyme et sécurisée.' : 'SONGRE is an independent project, born from a simple vision: connect blood donors to patients anonymously and securely.'}</p>
       </div>
       <div class="about-creator-card reveal">
-        <div class="creator-avatar">
-          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        </div>
         <div class="creator-info">
           <h3 class="creator-name">POODA Samuel</h3>
           <p class="creator-role">${locale === 'fr' ? 'Fondateur &amp; Développeur — Burkina Faso' : 'Founder &amp; Developer — Burkina Faso'}</p>
@@ -166,8 +163,8 @@ export function aboutPage(locale: TranslationKey, path: string, baseUrl: string)
         <p class="download-desc reveal">${locale === 'fr' ? 'Ensemble, nous pouvons faire de la pénurie de sang une réalité du passé.' : 'Together, we can make blood shortages a thing of the past.'}</p>
         <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;" class="reveal">
           <a href="#" class="btn btn-white btn-lg">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.7 9.05 7.37c1.57.07 2.65.83 3.57.9 1.36-.28 2.66-1.05 4.1-.95 1.72.14 3.04.82 3.87 2.1-3.56 2.12-2.72 7.02.73 8.46-.42 1.12-.98 2.22-1.27 2.4zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/></svg>
-            ${tr.cta.downloadIos}
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 20.5v-17c0-.6.34-1.15.87-1.42.53-.27 1.17-.2 1.63.18l11.14 8.5c.38.29.6.74.6 1.24s-.22.95-.6 1.24l-11.14 8.5c-.46.38-1.1.45-1.63.18-.53-.27-.87-.82-.87-1.42z"/></svg>
+            ${tr.cta.downloadAndroid}
           </a>
           <a href="${prefix}/contact" class="btn btn-outline" style="border-color:white; color:white;">
             ${locale === 'fr' ? 'Devenir Partenaire →' : 'Become a Partner →'}
