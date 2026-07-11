@@ -305,22 +305,18 @@ export function homePage(locale: TranslationKey, path: string, baseUrl: string):
             <div class="impact-circle"></div>
             <div class="impact-circle"></div>
             <div class="impact-data-card">
-              <div class="data-card-title">${locale === 'fr' ? 'Ce qui vous protège' : 'What protects you'}</div>
+              <div class="data-card-title">${locale === 'fr' ? 'Comment ça marche' : 'How it works'}</div>
               <div class="data-card-row">
-                <span>${locale === 'fr' ? 'Anonymat' : 'Anonymity'}</span>
-                <span class="text-primary">✓</span>
+                <span>1</span>
+                <span class="text-primary">${locale === 'fr' ? 'Inscription anonyme' : 'Anonymous sign-up'}</span>
               </div>
               <div class="data-card-row">
-                <span>${locale === 'fr' ? 'Données chiffrées' : 'Encrypted data'}</span>
-                <span class="text-primary">✓</span>
+                <span>2</span>
+                <span class="text-primary">${locale === 'fr' ? 'Alerte reçue' : 'Alert received'}</span>
               </div>
               <div class="data-card-row">
-                <span>${locale === 'fr' ? 'Sans publicité' : 'Ad-free'}</span>
-                <span class="text-primary">✓</span>
-              </div>
-              <div class="data-card-row">
-                <span>${locale === 'fr' ? 'Groupes sanguins' : 'Blood types'}</span>
-                <span class="text-primary">A, B, AB, O</span>
+                <span>3</span>
+                <span class="text-primary">${locale === 'fr' ? 'Don effectué' : 'Donation made'}</span>
               </div>
             </div>
           </div>
